@@ -4,8 +4,8 @@ const pool=new Pool({
     user:'projet_user',
     password:'00000000',
     host:'localhost',
-    port:5500,
-    database:'db name'
+    port:5432,
+    database:'projet_web'
 
 })
 

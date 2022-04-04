@@ -12,7 +12,7 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
         console.log(boisson.rows)
         const sauce= await pool.query('SELECT * FROM sauce')
         console.log(sauce.rows)
-        res.render('menu',{pizza:pizza,entree:entree,boisson:boisson,sauce:sauce})
+        //res.render('menu',{pizza:pizza,entree:entree,boisson:boisson,sauce:sauce})
     }
     catch (err)
     {
