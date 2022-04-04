@@ -1,5 +1,5 @@
 const express=require('express')
-const routes=require('./routes/routes')
+const routes=require('./routes/route')
 const server=express()
 
 server.use(express.static('public'));

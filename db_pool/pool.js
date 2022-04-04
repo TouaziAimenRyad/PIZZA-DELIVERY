@@ -1,6 +1,6 @@
 const Pool=require('pg').Pool
 
-const pool=Pool({
+const pool=new Pool({
     user:'projet_user',
     password:'00000000',
     host:'localhost',

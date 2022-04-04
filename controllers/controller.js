@@ -24,5 +24,5 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
 }
 
 module.exports={
-    get_menu,
+    get_all_menu_items,
 }
