@@ -2,6 +2,8 @@ CREATE DATABASE projet_web ;
 
 CREATE USER projet_user WITH PASSWORD '00000000';
 
+GRANT ALL PRIVILEGES ON DATABASE projet_web TO projet_user;
+
 CREATE TABLE sauce (
     nom VARCHAR(255) PRIMARY_KEY,
     prix FLOAT
