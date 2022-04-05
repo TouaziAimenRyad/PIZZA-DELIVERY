@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS sauce;
 DROP TABLE IF EXISTS entree;
 DROP TABLE IF EXISTS pizza;
 DROP TABLE IF EXISTS boisson;
-DROP TABLE IF EXISTS ingrediant;
+DROP TABLE IF EXISTS ingredient;
 
 
 CREATE TABLE sauce  (
@@ -48,7 +48,7 @@ CREATE TABLE pizza(
 
 );
 
-CREATE TABLE ingrediant(
+CREATE TABLE ingredient(
     nom VARCHAR(255) PRIMARY KEY,
     prix FLOAT 
 
@@ -56,7 +56,7 @@ CREATE TABLE ingrediant(
 
 CREATE TABLE pizza_ing(
     pizza_nom VARCHAR(255) REFERENCES pizza(nom),
-    ing_nom VARCHAR(255) REFERENCES ingrediant(nom),
+    ing_nom VARCHAR(255) REFERENCES ingredient(nom),
     PRIMARY KEY(pizza_nom,ing_nom)
 );
 
