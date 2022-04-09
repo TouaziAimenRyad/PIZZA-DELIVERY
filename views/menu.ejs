@@ -75,146 +75,26 @@
           <div id="sub-menu" >
             <div id="entree" class="menu-sec  active-menu">
               <!-- generate with jquery or ejs -->
-              <div class="menu-item">
-                <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-                <div class="item-body">
-                  <h3 class="menu-item-heading" >
-                      <span class="menu-item-name">napolitan</span>
-                      <span class="menu-item-price">18$</span>
-                  </h3>
-                  <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat</p>
-                  <div class="d-flex flex-row justify-content-between">
-                    <a class="add">+</a>
-                    <a class="personaliser">personaliser</a>
-                  </div>
-                </div>
+              <%- include('partials/entree',{entree:entree}); %>
               </div>
-    
-    
-              <div class="menu-item">
-                <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-                <div class="item-body">
-                  <h3 class="menu-item-heading" >
-                      <span class="menu-item-name">napolitan</span>
-                      <span class="menu-item-price">18$</span>
-                  </h3>
-                  <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat voluptatum sunt fugiat nihil</p>
-                  <div class="d-flex flex-row justify-content-between">
-                    <a class="add">+</a>
-                    <a class="personaliser">personaliser</a>
-                  </div>
-                </div>
-              </div>
-    
-    
-              <div class="menu-item">
-                <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-                <div class="item-body">
-                  <h3 class="menu-item-heading" >
-                      <span class="menu-item-name">napolitan</span>
-                      <span class="menu-item-price">18$</span>
-                  </h3>
-                  <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat </p>
-                  <div class="d-flex flex-row justify-content-between">
-                    <a class="add">+</a>
-                    <a class="personaliser">personaliser</a>
-                  </div>
-                </div>
-              </div>
-    
-    
-              <div class="menu-item">
-                <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-                <div class="item-body">
-                  <h3 class="menu-item-heading" >
-                      <span class="menu-item-name">napolitan</span>
-                      <span class="menu-item-price">18$</span>
-                  </h3>
-                  <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat voluptatum sunt fugiat nihil, </p>
-                  <div class="d-flex flex-row justify-content-between">
-                    <a class="add">+</a>
-                    <a class="personaliser">personaliser</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="menu-item">
-                <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-                <div class="item-body">
-                  <h3 class="menu-item-heading" >
-                      <span class="menu-item-name">napolitan</span>
-                      <span class="menu-item-price">18$</span>
-                  </h3>
-                  <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat voluptatum sunt fugiat nihil, </p>
-                  <div class="d-flex flex-row justify-content-between">
-                    <a class="add">+</a>
-                    <a class="personaliser">personaliser</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="menu-item">
-                <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-                <div class="item-body">
-                  <h3 class="menu-item-heading" >
-                      <span class="menu-item-name">napolitan</span>
-                      <span class="menu-item-price">18$</span>
-                  </h3>
-                  <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat voluptatum sunt fugiat nihil, </p>
-                  <div class="d-flex flex-row justify-content-between">
-                    <a class="add">+</a>
-                    <a class="personaliser">personaliser</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="menu-item">
-                <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-                <div class="item-body">
-                  <h3 class="menu-item-heading" >
-                      <span class="menu-item-name">napolitan</span>
-                      <span class="menu-item-price">18$</span>
-                  </h3>
-                  <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat voluptatum sunt fugiat nihil, </p>
-                  <div class="d-flex flex-row justify-content-between">
-                    <a class="add">+</a>
-                    <a class="personaliser">personaliser</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="menu-item">
-                <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-                <div class="item-body">
-                  <h3 class="menu-item-heading" >
-                      <span class="menu-item-name">napolitan</span>
-                      <span class="menu-item-price">18$</span>
-                  </h3>
-                  <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat voluptatum sunt fugiat nihil, </p>
-                  <div class="d-flex flex-row justify-content-between">
-                    <a class="add">+</a>
-                    <a class="personaliser">personaliser</a>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-    
             <div id="pizza" class="menu-sec hidden-menu" style="width: 100%;height: 500px;background-color: aqua;">
+              <%- include('partials/pizza',{pizza:pizza}); %>
               
     
             </div>
             
             <div id="boisson" class="menu-sec hidden-menu" style="width: 100%;height: 500px;background-color: rgb(76, 0, 255);">
+              <%- include('partials/boisson',{boisson:boisson}); %>
     
             </div>
             
             <div id="pre-menu" class="menu-sec hidden-menu" style="width: 100%;height: 500px;background-color: rgb(0, 255, 115);">
+              <%- include('partials/pre_menu'); %>
     
             </div>
   
             <div id="perso" class="menu-sec hidden-menu" style="width: 100%;height: 500px;background-color: rgb(255, 0, 0);">
-    
+              <%- include('partials/personaliser'); %>
             </div>
   
   

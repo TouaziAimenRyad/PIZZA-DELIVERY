@@ -77,7 +77,7 @@ INSERT INTO sauce(nom,prix) VALUES
 INSERT INTO entree(nom,prix) VALUES 
 ('Breadsticks Extra Mozzarella',6.5),
 ('Breadsticks mozzarella ',5.0),
-('Breadsticks mozzarella ',5.0),
+('Salade Caesar',7.0),
 ('Chicken Wings Epicées',5.0),
 ('Chicken Wings',5.0);
 
@@ -86,9 +86,9 @@ INSERT INTO pizza(nom,taille,description,prix) VALUES
 ('Montagnarde','S','Crème fraîche légère, mozzarella, jambon cru, fromage à raclette et champignons frais',8.5),
 ('Suprême','S','Sauce tomate à l origan, mozzarella, emietté au boeuf, saucisse pepperoni, champignons frais, oignons rouges frais et poivrons verts frais',8.5),
 ('Raclette','S','Crème fraîche légère, mozzarella, pommes de terre, lardons et fromage à raclette',8),
-('Chicken Barbecue','Sauce barbecue, mozzarella, filet de poulet rôti, oignons rouges frais, champignons frais et poivrons verts frais','S',8),
-('Orientale','Sauce tomate à l origan, mozzarella, merguez et champignons frais','S',7),
-('Margherita','Sauce tomate à l origan et mozzarella','S',5),
+('Chicken Barbecue','S','Sauce barbecue, mozzarella, filet de poulet rôti, oignons rouges frais, champignons frais et poivrons verts frais',8),
+('Orientale','S','Sauce tomate à l origan, mozzarella, merguez et champignons frais',7),
+('Margherita','S','Sauce tomate à l origan et mozzarella',5),
 ('Nordique','S','Crème fraîche légère, mozzarella et saumon fumé de Norvège',8.5);
 
 INSERT INTO boisson(nom,prix) VALUES 
@@ -102,7 +102,7 @@ INSERT INTO boisson(nom,prix) VALUES
 ('Oasis Tropical 33cl',2.0);
 
 
-INSERT INTO ingediant(nom,prix) VALUES 
+INSERT INTO ingrediant(nom,prix) VALUES 
 ('A',0.4),
 ('B',0.3),
 ('C',1.0),

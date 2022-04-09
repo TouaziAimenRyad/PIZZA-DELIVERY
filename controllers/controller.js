@@ -13,7 +13,7 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
         console.log(boisson.rows)
         const sauce= await pool.query('SELECT * FROM sauce')
         console.log(sauce.rows)
-        //res.render('menu',{pizza:pizza,entree:entree,boisson:boisson,sauce:sauce})
+        res.render('menu',{entree:entree.rows,pizza:pizza.rows,boisson:boisson.rows,sauce:sauce.rows})
     }
     catch (err)
     {
@@ -21,7 +21,7 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
         res.send("error data base ")
     }
     
-    res.render('menu')
+    
 }
 
 const add_to_cart=(req,res,next)=>
@@ -42,5 +42,6 @@ const item_detaill=(req,res,next)=>
 module.exports={
     get_all_menu_items,
     add_to_cart,
-    delete_from_cart
+    delete_from_cart,
+    item_detaill
 }

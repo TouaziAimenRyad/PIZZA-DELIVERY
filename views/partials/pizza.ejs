@@ -1,0 +1,20 @@
+<% pizza.forEach(x=>{ %>
+<div class="menu-item">
+    <img src= "assets/<%= x.nom %>"  alt="" class="menu-item-image">
+    <div class="item-body">
+        <h3 class="menu-item-heading">
+            <span class="menu-item-name"><%= x.nom %></span>
+            <span class="menu-item-price"><%= x.prix %>$</span>
+        </h3>
+        <p class="menu-item-text"><%= x.description %></p>
+        <div class="d-flex flex-row justify-content-between">
+            <form action="/menu/add_to_cart" method="post">
+                <input type="hidden" name="nom_produit" value="<%= x.nom %>">
+                <button type="submit" class="add">+</button>
+            </form>
+            <a class="personaliser">personaliser</a>
+        </div>
+
+    </div>
+</div>
+<% }) %>
