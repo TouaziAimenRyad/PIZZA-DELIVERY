@@ -24,6 +24,7 @@ CREATE TABLE sauce  (
 
 CREATE TABLE entree (
     nom VARCHAR(255) PRIMARY KEY,
+    description VARCHAR(512),
     prix FLOAT
 
 );
@@ -74,12 +75,12 @@ INSERT INTO sauce(nom,prix) VALUES
 ('Sauce Curry',0.3),
 ('Ketchup',0.3);
 
-INSERT INTO entree(nom,prix) VALUES 
-('Breadsticks Extra Mozzarella',6.5),
-('Breadsticks mozzarella ',5.0),
-('Salade Caesar',7.0),
-('Chicken Wings Epicées',5.0),
-('Chicken Wings',5.0);
+INSERT INTO entree(nom,description,prix) VALUES 
+('Breadsticks Extra Mozzarella','Comme le Breadsticks Mozzarella, avec en plus de la Mozzarella gratinée par-dessus! Servis avec une sauce au choix.',6.5),
+('Breadsticks mozzarella ','8 Bâtonnets de pâte à pizza garnis de mozzarella. Servis avec une délicieuse sauce au choix.',5.0),
+('Salade Caesar','Salade verte, tomates fraîches, filet de poulet rôti et mariné, Parmigiano Reggiano AOP, tranche de pain à l’ail et une sauce Caesar',7.0),
+('Chicken Wings Epicées','Recette très épicée : 6 ailes de poulet marinées',5.0),
+('Chicken Wings','Recette originale : 6 ailes de poulet marinées.',5.0);
 
 INSERT INTO pizza(nom,taille,description,prix) VALUES 
 ('4 Fromages','S','Sauce tomate à l origan ou crème fraîche légère, mozzarella, fromage de chèvre, emmental et Fourme d Ambert AOP',8.5),

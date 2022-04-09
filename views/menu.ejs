@@ -75,15 +75,15 @@
           <div id="sub-menu" >
             <div id="entree" class="menu-sec  active-menu">
               <!-- generate with jquery or ejs -->
-              <%- include('partials/entree',{entree:entree}); %>
+              <%- include('partials/entree',{entree:entree,sauce:sauce}); %>
               </div>
-            <div id="pizza" class="menu-sec hidden-menu" style="width: 100%;height: 500px;background-color: aqua;">
+            <div id="pizza" class="menu-sec hidden-menu" >
               <%- include('partials/pizza',{pizza:pizza}); %>
               
     
             </div>
             
-            <div id="boisson" class="menu-sec hidden-menu" style="width: 100%;height: 500px;background-color: rgb(76, 0, 255);">
+            <div id="boisson" class="menu-sec hidden-menu" >
               <%- include('partials/boisson',{boisson:boisson}); %>
     
             </div>

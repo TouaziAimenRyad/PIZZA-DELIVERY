@@ -123,7 +123,6 @@ body, html {
     
 
 }
-
 .menu-item 
 {
     height: 500px;
@@ -172,9 +171,9 @@ body, html {
     height: auto;
 }
 
-.item-body .add
+.add
 {
-    width: 35px;
+    width: 100%;
     height: 35px;
     margin: 0 ;
     justify-self: center;
@@ -189,12 +188,12 @@ body, html {
 }
 
 
-.item-body .add:hover {
+.add:hover {
 	background-color:#fc781a;
 }
 
 
-.item-body .personaliser
+.personaliser
 {
   color:#fff;
   display: block;
@@ -233,6 +232,13 @@ body, html {
     z-index: 0;
     display: none;
 }
+
+
+#boisson .menu-item
+{
+   height: 350px; 
+}
+
 
 /*
 @media (max-width: 1310px) 

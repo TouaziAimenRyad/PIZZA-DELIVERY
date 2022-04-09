@@ -1,15 +1,26 @@
-<div class="menu-item">
-    <img class="menu-item-image" src="/assets/pizza.jpg" alt="" />
-    <div class="item-body">
-        <h3 class="menu-item-heading">
-            <span class="menu-item-name">napolitan</span>
-            <span class="menu-item-price">18$</span>
-        </h3>
-        <p class="menu-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi recusandae quaerat</p>
-        <div class="d-flex flex-row justify-content-between">
-            <a class="add">+</a>
-            <a class="personaliser">personaliser</a>
+<% entree.forEach(x=>{ %>
+    <div class="menu-item">
+        <img class="menu-item-image" src="/assets/entree/<%= x.nom %>" alt="" />
+        <div class="item-body">
+            <h3 class="menu-item-heading">
+                <span class="menu-item-name"><%= x.nom %></span>
+                <span class="menu-item-price"><%= x.prix %>$</span>
+            </h3>
+            <p class="menu-item-text"><%= x.description %></p>
+            <form action="/menu/add_to_cart" method="post">
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <option selected>Choisir une sauce gratuite</option>
+                    <% entree.forEach(y=>{ %>
+                    <option value="<%= y.nom %>"><%= x.nom %></option>
+                     <% }) %>
+                </select>
+                <div class="d-flex flex-row justify-content-between">
+                    <button type="submit" class="add">+</button>
+                </div>
+            </form>
+            
         </div>
     </div>
-</div>
+    
 
+<% }) %>
