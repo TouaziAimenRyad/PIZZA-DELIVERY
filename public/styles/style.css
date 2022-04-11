@@ -189,8 +189,13 @@ body, html {
 
 
 .add:hover {
-	background-color:#fc781a;
+	background-color:#f74008;
 }
+
+.add:active {
+	background-color:#f74008;
+}
+
 
 
 .personaliser

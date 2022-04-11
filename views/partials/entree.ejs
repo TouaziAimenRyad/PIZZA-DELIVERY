@@ -7,7 +7,7 @@
                 <span class="menu-item-price"><%= x.prix %>$</span>
             </h3>
             <p class="menu-item-text"><%= x.description %></p>
-            <form action="/menu/add_entree_to_cart" method="post">
+            <form class="add_entree_form" action="/menu/add_entree_to_cart" method="post">
                 <input type="hidden" name="nom_produit" value="<%= x.nom %>">
                 <select name='sauce' class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                     <option selected>Choisir une sauce gratuite</option>

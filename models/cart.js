@@ -17,7 +17,11 @@ module.exports=class Cart {
             cart.products.push(product);
         }
 
-        cart.totalPrice += product.prix;
+        if (product.type!='sauce gratuit')
+        {   
+            cart.totalPrice += product.prix;
+        }
+       
     }
 
     static getCart() {

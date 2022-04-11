@@ -20,6 +20,7 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
     
 }
 
+//you can get rid of all this and remove the forms from the partials and add it to the cart html then with jequery you fill the cart with input and lable containing data then to finish you send via post req  
 const add_pizza_to_cart=async(req,res,next)=>
 {
     try
@@ -28,7 +29,6 @@ const add_pizza_to_cart=async(req,res,next)=>
         let produit =pizza.rows[0]
         produit.type='pizza'
         Cart.save(produit)
-        res.redirect('/menu')
 
     }
     catch(err)
@@ -53,11 +53,10 @@ const add_entree_to_cart=async(req,res,next)=>
         if(sauce.rows.length>0)
         {
             let produit_gratuit=sauce.rows[0]
-            produit_gratuit.type='entree gratuit'
+            produit_gratuit.type='sauce gratuit'
             Cart.save(produit_gratuit)
         }
         
-        res.redirect('/menu')
 
     }
     catch(err)
@@ -77,7 +76,6 @@ const add_boisson_to_cart=async(req,res,next)=>
         let produit =boisson.rows[0]
         produit.type='boisson'
         Cart.save(produit)
-        res.redirect('/menu')
 
     }
     catch(err)

@@ -49,12 +49,30 @@ $(document).ready(()=>{
     })
     show_more()
 
+    $('.add_pizza_form').submit(function (e) { 
+        e.preventDefault();
+        url = $(this).attr( "action" );
+        value=($('.add_pizza_form input').val())
+        $.post(url, {nom_produit:value});
+        
+    });
     
-    
-
-    
-
-    
+    $('.add_entree_form').submit(function (e) { 
+        e.preventDefault();
+        url = $(this).attr( "action" );
+        value1=($('.add_entree_form input').val())
+        value2=($(".add_entree_form select").val())
+        $.post(url, {nom_produit:value1,sauce:value2});
+        
+    });
+   
+    $('.add_boisson_form').submit(function (e) { 
+        e.preventDefault();
+        url = $(this).attr( "action" );
+        value=($('.add_boisson_form input').val())
+        $.post(url, {nom_produit:value});
+        
+    });
    
 
     
