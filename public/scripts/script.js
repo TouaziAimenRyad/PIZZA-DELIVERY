@@ -17,36 +17,52 @@ const show_less=function(){
 
 }
 
+const toggle_hide_menu=function(active,hidden)
+{
+    $(active).toggleClass("active-menu hidden")
+    $(hidden).toggleClass("active-menu hidden")
+}
+
 $(document).ready(()=>{
     $('#pizza-btn').click((e)=>{
-        $('.active-menu').toggleClass("active-menu hidden-menu")
-        $('#pizza').toggleClass("active-menu hidden-menu")
-
+        toggle_hide_menu('.active-menu','#pizza')
     })
 
     $('#entree-btn').click((e)=>{
-        $('.active-menu').toggleClass("active-menu hidden-menu")
-        $('#entree').toggleClass("active-menu hidden-menu")
+        toggle_hide_menu('.active-menu','#entree')
+
 
     })
 
     $('#boisson-btn').click((e)=>{
-        $('.active-menu').toggleClass("active-menu hidden-menu")
-        $('#boisson').toggleClass("active-menu hidden-menu")
+        toggle_hide_menu('.active-menu','#boisson')
 
     })
 
     $('#pre-menu-btn').click((e)=>{
-        $('.active-menu').toggleClass("active-menu hidden-menu")
-        $('#pre-menu').toggleClass("active-menu hidden-menu")
+        toggle_hide_menu('.active-menu','#pre-menu')
+
 
     })
 
     $('#perso-btn').click((e)=>{
-        $('.active-menu').toggleClass("active-menu hidden-menu")
-        $('#perso').toggleClass("active-menu hidden-menu")
+        toggle_hide_menu('.active-menu','#perso')
+
 
     })
+    $('#cart').click((e)=>{
+        console.log(51515)
+        $(".cart-sec").toggleClass("hidden")
+
+    })
+    $('#close-cart').click((e)=>{
+        console.log(51515)
+        $(".cart-sec").toggleClass("hidden")
+
+    })
+
+
+
     show_more()
 
     $('.add_pizza_form').submit(function (e) { 

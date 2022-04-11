@@ -53,7 +53,7 @@
       <img src="/assets/hero2.jpg" alt="hero" class="hero-img" />
     </div>
 
-    <a class="cart">
+    <a id="cart">
         <img src="/assets/shopping-cart.png" alt="">
         CHECKOUT
       <p>0</p>
@@ -77,34 +77,42 @@
               <!-- generate with jquery or ejs -->
               <%- include('partials/entree',{entree:entree,sauce:sauce}); %>
               </div>
-            <div id="pizza" class="menu-sec hidden-menu" >
+            <div id="pizza" class="menu-sec hidden" >
               <%- include('partials/pizza',{pizza:pizza}); %>
               
     
             </div>
             
-            <div id="boisson" class="menu-sec hidden-menu" >
+            <div id="boisson" class="menu-sec hidden" >
               <%- include('partials/boisson',{boisson:boisson}); %>
     
             </div>
             
-            <div id="pre-menu" class="menu-sec hidden-menu" style="width: 100%;height: 500px;background-color: rgb(0, 255, 115);">
+            <div id="pre-menu" class="menu-sec hidden" >
               <%- include('partials/pre_menu'); %>
     
             </div>
   
-            <div id="perso" class="menu-sec hidden-menu" style="width: 100%;height: 500px;background-color: rgb(255, 0, 0);">
+            <div id="perso" class="menu-sec hidden" >
               <%- include('partials/personaliser'); %>
             </div>
-  
-  
-  
-    
           </div>
-        
       </div>
-      <!--<button id="show-more"type="button" class="btn" > show more </button>-->
     </div>
+
+    <div class="cart-sec hidden">
+      <form action="" class="cart-form">
+        <label for="">adededed</label>
+        <input type="hidden" name="" id="">
+        <label for="">adededed</label>
+        <input type="hidden" name="" id="">
+        <label for="">adededed</label>
+        <input type="hidden" name="" id="">
+        <button type="submit">commander</button>
+        <a id="close-cart"><img src="/assets/icons8-close-64.png" alt=""></a>
+      </form>
+    </div>
+  
     <script src="/scripts/script.js"></script>
   </body>
 </html>
