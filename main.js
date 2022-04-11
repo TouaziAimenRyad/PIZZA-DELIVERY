@@ -3,8 +3,6 @@ const routes=require('./routes/routes')
 const server=express()
 
 server.use(express.static('public'));
-
-
 server.use(express.urlencoded({ extended: true }));
 server.set('view engine','ejs')
 
