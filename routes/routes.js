@@ -4,6 +4,7 @@ const express = require('express');
 
 const router=express.Router()
 router.get('/', controller.get_all_menu_items)
+router.get('/get-cart',controller.get_cart)
 router.post('/add_pizza_to_cart',controller.add_pizza_to_cart)
 router.post('/add_boisson_to_cart',controller.add_boisson_to_cart)
 router.post('/add_entree_to_cart',controller.add_entree_to_cart)

@@ -24,6 +24,11 @@ const toggle_hide_menu=function(active,hidden)
 }
 
 $(document).ready(()=>{
+    let nb_elem_cart;
+    $.get("/menu/get-cart","json").done(function(data){
+        nb_elem_cart=data.products.length
+    });
+    
     $('#pizza-btn').click((e)=>{
         toggle_hide_menu('.active-menu','#pizza')
     })
@@ -50,9 +55,54 @@ $(document).ready(()=>{
 
 
     })
+
+    show_more()
+
+    //using this gave me the possibilité to keep the cart filled even after reloading
+    $('.add_pizza_form').submit(function (e) { 
+        e.preventDefault();
+        url = $(this).attr( "action" );
+        form_id=($(this).attr("id"))
+        value=($('#'+form_id+' input').val())
+        
+        $.post(url, {nom_produit:value});
+        nb_elem_cart++
+        $("#cart p").html(nb_elem_cart)
+        
+    });
+    
+    $('.add_entree_form').submit(function (e) { 
+        e.preventDefault();
+        url = $(this).attr( "action" );
+        form_id=($(this).attr("id"))
+        value1=($('#'+form_id+' input').val())
+        value2=($('#'+form_id+' select').val())
+        
+        $.post(url, {nom_produit:value1,sauce:value2});
+        nb_elem_cart++
+        $("#cart p").html(nb_elem_cart)
+        
+    });
+   
+    $('.add_boisson_form').submit(function (e) { 
+        e.preventDefault();
+        url = $(this).attr( "action" );
+        form_id=($(this).attr("id"))
+        value=($('#'+form_id+' input').val())
+
+        $.post(url, {nom_produit:value});
+        nb_elem_cart++
+        $("#cart p").html(nb_elem_cart)
+        
+    });
+
     $('#cart').click((e)=>{
-        console.log(51515)
-        $(".cart-sec").toggleClass("hidden")
+        $.get("/menu/get-cart","json").done(function(data){
+            console.log(data)//build the cart using this 
+            $(".cart-sec").toggleClass("hidden")
+        });
+
+      
 
     })
     $('#close-cart').click((e)=>{
@@ -60,35 +110,6 @@ $(document).ready(()=>{
         $(".cart-sec").toggleClass("hidden")
 
     })
-
-
-
-    show_more()
-
-    $('.add_pizza_form').submit(function (e) { 
-        e.preventDefault();
-        url = $(this).attr( "action" );
-        value=($('.add_pizza_form input').val())
-        $.post(url, {nom_produit:value});
-        
-    });
-    
-    $('.add_entree_form').submit(function (e) { 
-        e.preventDefault();
-        url = $(this).attr( "action" );
-        value1=($('.add_entree_form input').val())
-        value2=($(".add_entree_form select").val())
-        $.post(url, {nom_produit:value1,sauce:value2});
-        
-    });
-   
-    $('.add_boisson_form').submit(function (e) { 
-        e.preventDefault();
-        url = $(this).attr( "action" );
-        value=($('.add_boisson_form input').val())
-        $.post(url, {nom_produit:value});
-        
-    });
    
 
     

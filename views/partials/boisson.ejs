@@ -7,7 +7,7 @@
                 <span class="menu-item-price"><%= x.prix %>$</span>
             </h3>
             <div class="d-flex flex-row justify-content-centre">
-                <form id="add_boisson_form" action="/menu/add_boisson_to_cart" method="post" style="width: 100%;">
+                <form id="form_id__<%= x.nom.replaceAll(' ','_').replaceAll(',','') %>" class="add_boisson_form" action="/menu/add_boisson_to_cart" method="post" style="width: 100%;">
                     <input type="hidden" name="nom_produit" value="<%= x.nom %>">
                     <button type="submit" class="add">+</button>
                 </form>

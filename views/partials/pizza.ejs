@@ -8,7 +8,7 @@
             </h3>
             <p class="menu-item-text"><%= x.description %></p>
             <div class="d-flex flex-row justify-content-between">
-                <form class="add_pizza_form" action="/menu/add_pizza_to_cart" method="post">
+                <form id="form_id_<%= x.nom.replaceAll(' ','_') %>" class="add_pizza_form" action="/menu/add_pizza_to_cart" method="post">
                     <input type="hidden" name="nom_produit" value="<%= x.nom %>">
                     <button type="submit" class="add">+</button>
                 </form>

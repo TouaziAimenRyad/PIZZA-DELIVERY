@@ -1,5 +1,6 @@
 const express=require('express')
 const routes=require('./routes/routes')
+const Cart=require('./models/cart')
 const server=express()
 
 server.use(express.static('public'));
@@ -8,6 +9,11 @@ server.set('view engine','ejs')
 
 server.use('/menu',routes)
 
+
+server.use((req,res,next)=>{
+    console.log(Cart.getCart())
+    next()
+})
 server.use((req, res) => {
     res.status(404).send('404')
 })
