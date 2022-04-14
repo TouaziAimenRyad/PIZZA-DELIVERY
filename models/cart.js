@@ -37,4 +37,8 @@ module.exports=class Cart {
         }
     }
 
+    static reset(){
+        cart={products: [],totalPrice:0}
+    }
+
 }

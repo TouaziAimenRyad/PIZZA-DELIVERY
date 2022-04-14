@@ -24,11 +24,8 @@ const toggle_hide_menu=function(active,hidden)
 }
 
 $(document).ready(()=>{
-    let nb_elem_cart;
-    $.get("/menu/get-cart","json").done(function(data){
-        nb_elem_cart=data.products.length
-    });
-    
+    let nb_elem_cart=0;
+  
     $('#pizza-btn').click((e)=>{
         toggle_hide_menu('.active-menu','#pizza')
     })
@@ -58,7 +55,7 @@ $(document).ready(()=>{
 
     show_more()
 
-    //using this gave me the possibilité to keep the cart filled even after reloading
+    //using this gave me the possibilité to keep the cart filled even after reloading however i added a reset function that triggers every time we reload the menu 
     $('.add_pizza_form').submit(function (e) { 
         e.preventDefault();
         url = $(this).attr( "action" );

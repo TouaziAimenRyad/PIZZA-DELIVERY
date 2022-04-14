@@ -4,6 +4,7 @@ const Cart=require('../models/cart')
 let cart;
 const get_all_menu_items=async(req,res)=> //this will be in a middle ware that runs in the begening of each req
 {
+    Cart.reset()
     try
     {
         const pizza = await pool.query('SELECT * FROM pizza')
