@@ -55,7 +55,7 @@ $(document).ready(()=>{
 
     show_more()
 
-    //using this gave me the possibilité to keep the cart filled even after reloading however i added a reset function that triggers every time we reload the menu 
+    //using this gave me the possibilité to keep the cart filled even after reloading however i added a reset function that triggers every time we reload the menu add loading animation to wait for the cart to be ready
     $('.add_pizza_form').submit(function (e) { 
         e.preventDefault();
         url = $(this).attr( "action" );
