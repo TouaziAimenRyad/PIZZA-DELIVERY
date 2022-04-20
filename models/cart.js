@@ -33,7 +33,21 @@ module.exports=class Cart {
     static delete(productNom) {
         const isExisting = cart.products.findIndex(p => p.nom == productNom);
         if (isExisting >= 0) {
-            cart.products.splice(isExisting, 1);
+            if(cart.products[isExisting].type!="sauce gratuit")
+            {
+                cart.totalPrice=cart.totalPrice-cart.products[isExisting].prix
+
+            }
+            if(cart.products[isExisting].qty==1)
+            {
+                cart.products.splice(isExisting, 1);
+            }
+            else
+            {
+                cart.products[isExisting].qty--
+            }
+            
+            
         }
     }
 

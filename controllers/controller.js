@@ -107,7 +107,9 @@ const add_boisson_to_cart=async(req,res,next)=>
 
 const delete_from_cart=(req,res,next)=>
 {
-    console.log(req.body)
+    Cart.delete(req.body.nom_produit)
+    console.log(Cart.getCart());
+    res.end()
 
 }
 

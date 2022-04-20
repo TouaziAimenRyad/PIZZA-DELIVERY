@@ -10,10 +10,6 @@ server.set('view engine','ejs')
 server.use('/menu',routes)
 
 
-server.use((req,res,next)=>{
-    console.log(Cart.getCart())
-    next()
-})
 server.use((req, res) => {
     res.status(404).send('404')
 })
