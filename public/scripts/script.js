@@ -165,7 +165,8 @@ $(document).ready(()=>{
             layout=layout+"<input type=\"text\" id=\"nom-client\" name=\"nom\" required>"
             layout=layout+"<label for=\"prenom\">Prenom:</label>"
             layout=layout+"<input type=\"text\" id=\"prenom-client\" name=\"prenom\" required>"
-            layout=layout+"<input id=\"pac-input\" type=\"text\" placeholder=\"Enter a location\" >"
+            layout=layout+"<div id=\"pac-container\"><input id=\"pac-input\" type=\"text\" placeholder=\"Enter a location\" ></div>"
+            layout=layout+"<div id=\"infowindow-content\"><span id=\"place-name\" class=\"title\"></span><br /><span id=\"place-address\"></span></div>"
             $("#cart-form").html(layout)
             $(".cart-sec").toggleClass("hidden")
 
@@ -173,8 +174,6 @@ $(document).ready(()=>{
             close_cart()
 
             delete_item_from_cart(nb_elem_cart)
-
-            commander()
             
         });
 
