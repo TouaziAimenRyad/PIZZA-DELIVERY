@@ -56,6 +56,22 @@ const delete_item_from_cart=function(nb_elem)
     })   
 }
 
+const commander=function()
+{
+   /* $("#cart-form").submit(function (e) { 
+        e.preventDefault();
+        let url = $(this).attr( "action" )
+        let nom=$(this).find("#nom-client").val()
+        let prenom=$(this).find("#prenom-client").val()
+        let adresse=$(this).find("#adresse-client").val()
+        let latitude
+        let longtitude
+        $.post(url,{nom:nom,prenom:prenom,adresse:adresse});
+
+        
+    });*/
+}
+
 $(document).ready(()=>{
     let nb_elem_cart=0;
   
@@ -91,9 +107,9 @@ $(document).ready(()=>{
     //using this gave me the possibilité to keep the cart filled even after reloading however i added a reset function that triggers every time we reload the menu add loading animation to wait for the cart to be ready
     $('.add_pizza_form').submit(function (e) { 
         e.preventDefault();
-        url = $(this).attr( "action" );
-        form_id=($(this).attr("id"))
-        value=($('#'+form_id+' input').val())
+        let url = $(this).attr( "action" );
+        let form_id=($(this).attr("id"))
+        let value=($('#'+form_id+' input').val())
         
         $.post(url, {nom_produit:value});
         nb_elem_cart++
@@ -103,10 +119,10 @@ $(document).ready(()=>{
     
     $('.add_entree_form').submit(function (e) { 
         e.preventDefault();
-        url = $(this).attr( "action" );
-        form_id=($(this).attr("id"))
-        value1=($('#'+form_id+' input').val())
-        value2=($('#'+form_id+' select').val())
+        let url = $(this).attr( "action" );
+        let form_id=($(this).attr("id"))
+        let value1=($('#'+form_id+' input').val())
+        let value2=($('#'+form_id+' select').val())
         $.post(url, {nom_produit:value1,sauce:value2});
         nb_elem_cart++
         if(value2!="Choisir une sauce gratuite")
@@ -119,9 +135,9 @@ $(document).ready(()=>{
    
     $('.add_boisson_form').submit(function (e) { 
         e.preventDefault();
-        url = $(this).attr( "action" );
-        form_id=($(this).attr("id"))
-        value=($('#'+form_id+' input').val())
+        let url = $(this).attr( "action" );
+        let form_id=($(this).attr("id"))
+        let value=($('#'+form_id+' input').val())
 
         $.post(url, {nom_produit:value});
         nb_elem_cart++
@@ -145,13 +161,20 @@ $(document).ready(()=>{
                 
             });
             layout=layout+"<button type=\"submit\">commander</button><a id=\"close-cart\"><img src=\"/assets/icons8-close-64.png\" ></a>"
-            $(".cart-form").html(layout)
+            layout=layout+"<label for=\"nom\">Nom:</label>"
+            layout=layout+"<input type=\"text\" id=\"nom-client\" name=\"nom\" required>"
+            layout=layout+"<label for=\"prenom\">Prenom:</label>"
+            layout=layout+"<input type=\"text\" id=\"prenom-client\" name=\"prenom\" required>"
+            layout=layout+"<input id=\"pac-input\" type=\"text\" placeholder=\"Enter a location\" >"
+            $("#cart-form").html(layout)
             $(".cart-sec").toggleClass("hidden")
 
             //must be in the call back if we re creating the button here
             close_cart()
 
             delete_item_from_cart(nb_elem_cart)
+
+            commander()
             
         });
 

@@ -108,7 +108,6 @@ const add_boisson_to_cart=async(req,res,next)=>
 const delete_from_cart=(req,res,next)=>
 {
     Cart.delete(req.body.nom_produit)
-    console.log(Cart.getCart());
     res.end()
 
 }
@@ -124,9 +123,10 @@ const commander=(req,res,next)=>
 {
     const nom=req.body.nom
     const prenom=req.body.prenom
-    const location=req.body.location
-    const command_id //generate using uuid
+    const adresse=req.body.adresse
+    const command_id =23//generate using uuid
     const cart=Cart.getCart()
+    console.log(cart)
     res.render('checked_out',{id:command_id,nom:nom,prenom:prenom})
 }
 module.exports={
