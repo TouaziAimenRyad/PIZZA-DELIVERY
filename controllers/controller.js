@@ -119,6 +119,16 @@ const item_detaill=(req,res,next)=>
 
     
 }
+
+const commander=(req,res,next)=>
+{
+    const nom=req.body.nom
+    const prenom=req.body.prenom
+    const location=req.body.location
+    const command_id //generate using uuid
+    const cart=Cart.getCart()
+    res.render('checked_out',{id:command_id,nom:nom,prenom:prenom})
+}
 module.exports={
     get_all_menu_items,
     get_cart,
@@ -126,5 +136,6 @@ module.exports={
     add_entree_to_cart,
     add_pizza_to_cart,
     delete_from_cart,
-    item_detaill
+    item_detaill,
+    commander
 }
