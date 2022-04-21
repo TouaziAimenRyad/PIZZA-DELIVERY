@@ -37,6 +37,7 @@ const add_pizza_to_cart=async(req,res,next)=>
         const pizza = await pool.query('SELECT * FROM pizza WHERE pizza.nom=\''+req.body.nom_produit+'\'')
         let produit =pizza.rows[0]
         produit.type='pizza'
+        produit.taille=req.body.taille
         Cart.save(produit)
        
         
@@ -78,7 +79,6 @@ const add_entree_to_cart=async(req,res,next)=>
         res.send("error data base ")
     }
     res.end()
-    //console.log(Cart.getCart())
 
 }
 
@@ -89,8 +89,8 @@ const add_boisson_to_cart=async(req,res,next)=>
     {
         const boisson = await pool.query('SELECT * FROM boisson WHERE boisson.nom=\''+req.body.nom_produit+'\'')
         let produit =boisson.rows[0]
-        //console.log(produit)
         produit.type='boisson'
+        produit.taille=req.body.taille
         Cart.save(produit)
         
 
@@ -107,7 +107,14 @@ const add_boisson_to_cart=async(req,res,next)=>
 
 const delete_from_cart=(req,res,next)=>
 {
-    Cart.delete(req.body.nom_produit)
+    if(req.body.taille==undefined)
+    {
+        Cart.delete(req.body.nom_produit)
+    }
+    else
+    {
+        Cart.deleteT(req.body.nom_produit,req.body.taille) //fot taille search
+    }
     res.end()
 
 }

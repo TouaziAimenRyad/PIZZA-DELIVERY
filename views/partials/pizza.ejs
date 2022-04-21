@@ -7,13 +7,23 @@
                 <span class="menu-item-price"><%= x.prix %>$</span>
             </h3>
             <p class="menu-item-text"><%= x.description %></p>
-            <div class="d-flex flex-row justify-content-between">
+            
                 <form id="form_id_<%= x.nom.replaceAll(' ','_') %>" class="add_pizza_form" action="/menu/add_pizza_to_cart" method="post">
                     <input type="hidden" name="nom_produit" value="<%= x.nom %>">
-                    <button type="submit" class="add">+</button>
+                    <select name='taille' class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected value="S">Small</option>
+                        <option value="M">Meduim</option>
+                        <option value="L" >Large</option>
+                    </select>
+                    <div class="d-flex flex-row justify-content-between">
+                        <button type="submit" class="add">+</button>
+                        <a class="personaliser">personaliser</a>
+                        
+                    </div>
+                    
                 </form>
-                <a class="personaliser">personaliser</a>
-            </div>
+                
+    
     
         </div>
     </div>

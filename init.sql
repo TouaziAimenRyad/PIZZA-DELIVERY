@@ -84,23 +84,23 @@ INSERT INTO entree(nom,description,prix) VALUES
 
 INSERT INTO pizza(nom,taille,description,prix) VALUES 
 ('4 Fromages','S','Sauce tomate à l origan ou crème fraîche légère, mozzarella, fromage de chèvre, emmental et Fourme d Ambert AOP',8.5),
-('Montagnarde','S','Crème fraîche légère, mozzarella, jambon cru, fromage à raclette et champignons frais',8.5),
-('Suprême','S','Sauce tomate à l origan, mozzarella, emietté au boeuf, saucisse pepperoni, champignons frais, oignons rouges frais et poivrons verts frais',8.5),
+('Montagnarde','M','Crème fraîche légère, mozzarella, jambon cru, fromage à raclette et champignons frais',8.5),
+('Suprême','L','Sauce tomate à l origan, mozzarella, emietté au boeuf, saucisse pepperoni, champignons frais, oignons rouges frais et poivrons verts frais',8.5),
 ('Raclette','S','Crème fraîche légère, mozzarella, pommes de terre, lardons et fromage à raclette',8),
 ('Chicken Barbecue','S','Sauce barbecue, mozzarella, filet de poulet rôti, oignons rouges frais, champignons frais et poivrons verts frais',8),
-('Orientale','S','Sauce tomate à l origan, mozzarella, merguez et champignons frais',7),
+('Orientale','M','Sauce tomate à l origan, mozzarella, merguez et champignons frais',7),
 ('Margherita','S','Sauce tomate à l origan et mozzarella',5),
 ('Nordique','S','Crème fraîche légère, mozzarella et saumon fumé de Norvège',8.5);
 
 INSERT INTO boisson(nom,prix) VALUES 
-('Coca-Cola Original 1,25L',3.4),
-('Coca-Cola Original 33cl',2.0),
-('Coca-Cola sans sucres 1,25L',3.4),
-('Coca-Cola sans sucres 33cl',2.0),
-('Coca-Cola Cherry 1,25L',3.4),
-('Coca-Cola Cherry 33cl',2.0),
-('Oasis Tropical 2L',3.4),
-('Oasis Tropical 33cl',2.0);
+('Coca-Cola Original 1,25L','1,25L',3.4),
+('Coca-Cola Original 33cl','33cl',2.0),
+('Coca-Cola sans sucres 1,25L','1,25L',3.4),
+('Coca-Cola sans sucres 33cl','33cl',2.0),
+('Coca-Cola Cherry 1,25L','1,25L',3.4),
+('Coca-Cola Cherry 33cl','33cl',2.0),
+('Oasis Tropical 2L','2L',3.4),
+('Oasis Tropical 33cl','33cl',2.0);
 
 
 INSERT INTO ingrediant(nom,prix) VALUES 

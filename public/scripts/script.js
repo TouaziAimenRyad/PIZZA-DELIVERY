@@ -30,6 +30,7 @@ const close_cart=function()
         $(".cart-sec").toggleClass("hidden")
 
     })
+    
 }
 
 const delete_item_from_cart=function(nb_elem)
@@ -37,8 +38,8 @@ const delete_item_from_cart=function(nb_elem)
     $(".delete-from-cart").click(function()
     {
         let parent=$(this).parent()
-        product_name=parent.attr("id")
-        let qt_elem=parent.find("h4")
+        let product_name=parent.attr("id")
+        let qt_elem=parent.find(".qty")
         let qt=parseInt(qt_elem.html().match(/(\d+)/)[0])
         if(qt==1)
         {
@@ -48,10 +49,20 @@ const delete_item_from_cart=function(nb_elem)
         {
             qt_elem.html("quantité: "+(qt-1))
         }
-        
+        let tl_elem=(parent.find(".tl").html())
+        let tl 
+        if(tl_elem!=undefined)
+        {
+            tl=(tl_elem .split(' '))[2]
+        }
+        else
+        {
+            tl=undefined
+        }
+       
         nb_elem--
         $("#cart p").html(nb_elem)
-        $.post("/menu/delete_from_cart",{nom_produit:product_name});
+        $.post("/menu/delete_from_cart",{nom_produit:product_name,taille:tl});
 
     })   
 }
@@ -110,8 +121,8 @@ $(document).ready(()=>{
         let url = $(this).attr( "action" );
         let form_id=($(this).attr("id"))
         let value=($('#'+form_id+' input').val())
-        
-        $.post(url, {nom_produit:value});
+        let value2=($('#'+form_id+' select').val())
+        $.post(url, {nom_produit:value,taille:value2});
         nb_elem_cart++
         $("#cart p").html(nb_elem_cart)
         
@@ -138,8 +149,8 @@ $(document).ready(()=>{
         let url = $(this).attr( "action" );
         let form_id=($(this).attr("id"))
         let value=($('#'+form_id+' input').val())
-
-        $.post(url, {nom_produit:value});
+        let value2=($('#'+form_id+' select').val())
+        $.post(url, {nom_produit:value,taille:value2});
         nb_elem_cart++
         $("#cart p").html(nb_elem_cart)
         
@@ -149,15 +160,23 @@ $(document).ready(()=>{
         $.get("/menu/get-cart","json").done(function(data){
             let layout=""
             data.products.forEach(element => {
-                if(element.type!="sauce gratuit")
+                if(element.type=='pizza')
                 {
-                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem\"> <h3><span>"+element.nom+"</span><span>"+element.prix+"</span></h3><h4> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem p\"> <h3><span>"+element.nom+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><h4 class=\"tl\"> taille: "+element.taille+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
                 }
-                else
+                if(element.type=='boisson')
                 {
-                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem\"> <h3><span>"+element.nom+"</span><span>"+"gratuit"+"</span></h3><h4> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
-
+                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem b\"> <h3><span>"+element.nom+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><h4 class=\"tl\"> taille: "+element.taille+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
                 }
+                if(element.type=='entree')
+                {
+                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem e\"> <h3><span>"+element.nom+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                }
+                if(element.type=="sauce gratuit")
+                {
+                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem\"> <h3><span>"+element.nom+"</span><span>"+"gratuit"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                }
+               
                 
             });
             layout=layout+"<button type=\"submit\">commander</button><a id=\"close-cart\"><img src=\"/assets/icons8-close-64.png\" ></a>"
@@ -180,6 +199,8 @@ $(document).ready(()=>{
       
 
     })
+
+
     
    
 

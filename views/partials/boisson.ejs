@@ -9,6 +9,11 @@
             <div class="d-flex flex-row justify-content-centre">
                 <form id="form_id__<%= x.nom.replaceAll(' ','_').replaceAll(',','') %>" class="add_boisson_form" action="/menu/add_boisson_to_cart" method="post" style="width: 100%;">
                     <input type="hidden" name="nom_produit" value="<%= x.nom %>">
+                    <select name='taille' class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected value="33Cl">33Cl</option>
+                        <option value="1L">1L</option>
+                        <option value="2L" >2L</option>
+                    </select>
                     <button type="submit" class="add">+</button>
                 </form>
             </div>
