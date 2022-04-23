@@ -7,6 +7,7 @@ const show_more =function(){
         show_less()
     })
 }
+//////////////////////////
 const show_less=function(){
     $("#show-less").click(function(e){
         $(this).text("show more")
@@ -17,6 +18,8 @@ const show_less=function(){
 
 }
 
+
+/////////////////////////////////////////////
 const toggle_hide_menu=function(active,hidden)
 {
     $(active).toggleClass("active-menu hidden")
@@ -24,6 +27,40 @@ const toggle_hide_menu=function(active,hidden)
 }
 
 
+/////////////////////////
+const navigate=function()
+{
+    $('#pizza-btn').click((e)=>{
+        toggle_hide_menu('.active-menu','#pizza')
+    })
+
+    $('#entree-btn').click((e)=>{
+        toggle_hide_menu('.active-menu','#entree')
+
+
+    })
+
+    $('#boisson-btn').click((e)=>{
+        toggle_hide_menu('.active-menu','#boisson')
+
+    })
+
+    $('#pre-menu-btn').click((e)=>{
+        toggle_hide_menu('.active-menu','#pre-menu')
+
+
+    })
+
+    $('#perso-btn').click((e)=>{
+        toggle_hide_menu('.active-menu','#perso')
+
+
+    })
+
+}
+
+
+///////////////////////////
 const close_cart=function()
 {
     $('#close-cart').click((e)=>{
@@ -33,6 +70,8 @@ const close_cart=function()
     
 }
 
+
+////////////////////////////////////////////
 const delete_item_from_cart=function(nb_elem)
 {
     $(".delete-from-cart").click(function()
@@ -67,54 +106,10 @@ const delete_item_from_cart=function(nb_elem)
     })   
 }
 
-const commander=function()
+
+///////////////////////////////////////
+const add_produit=function(nb_elem_cart)
 {
-   /* $("#cart-form").submit(function (e) { 
-        e.preventDefault();
-        let url = $(this).attr( "action" )
-        let nom=$(this).find("#nom-client").val()
-        let prenom=$(this).find("#prenom-client").val()
-        let adresse=$(this).find("#adresse-client").val()
-        let latitude
-        let longtitude
-        $.post(url,{nom:nom,prenom:prenom,adresse:adresse});
-
-        
-    });*/
-}
-
-$(document).ready(()=>{
-    let nb_elem_cart=0;
-  
-    $('#pizza-btn').click((e)=>{
-        toggle_hide_menu('.active-menu','#pizza')
-    })
-
-    $('#entree-btn').click((e)=>{
-        toggle_hide_menu('.active-menu','#entree')
-
-
-    })
-
-    $('#boisson-btn').click((e)=>{
-        toggle_hide_menu('.active-menu','#boisson')
-
-    })
-
-    $('#pre-menu-btn').click((e)=>{
-        toggle_hide_menu('.active-menu','#pre-menu')
-
-
-    })
-
-    $('#perso-btn').click((e)=>{
-        toggle_hide_menu('.active-menu','#perso')
-
-
-    })
-
-    show_more()
-
     //using this gave me the possibilité to keep the cart filled even after reloading however i added a reset function that triggers every time we reload the menu add loading animation to wait for the cart to be ready
     $('.add_pizza_form').submit(function (e) { 
         e.preventDefault();
@@ -155,7 +150,13 @@ $(document).ready(()=>{
         $("#cart p").html(nb_elem_cart)
         
     });
+}
 
+
+
+//////////////////////////////////////
+const open_cart=function(nb_elem_cart)
+{
     $('#cart').click((e)=>{
         $.get("/menu/get-cart","json").done(function(data){
             let layout=""
@@ -196,10 +197,74 @@ $(document).ready(()=>{
             
         });
 
+       
       
 
     })
+}
 
+
+////////////////////////////
+const update_prix=function()
+{   
+    $(".add_pizza_form").find("select").on('change',function(){
+        let taille=$(this).find(":selected").val()
+        let prix_elem=$(this).parent().parent().find(".menu-item-price")
+        const prix_base=parseFloat(prix_elem.attr("data"))
+        let new_prix
+        switch (taille) {
+            case 'S':
+                new_prix=prix_base
+            break;
+            case 'M':
+                new_prix=prix_base+2
+            break;
+            case 'L':
+                new_prix=prix_base+4
+            break;
+        
+        }
+        prix_elem.html(new_prix+'$')
+        
+    })
+
+    $(".add_boisson_form").find("select").on('change',function(){
+        let taille=$(this).find(":selected").val()
+        let prix_elem=$(this).parent().parent().parent().find(".menu-item-price")
+        const prix_base=parseFloat(prix_elem.attr("data"))
+        let new_prix
+        switch (taille) {
+            case '33Cl':
+                new_prix=prix_base
+            break;
+            case '1L':
+                new_prix=prix_base+1.4
+            break;
+            case '2L':
+                new_prix=prix_base+1.8
+            break;
+        
+        }
+        prix_elem.html(new_prix+'$')
+        
+    })
+}
+
+
+
+
+$(document).ready(()=>{
+    let nb_elem_cart=0;
+  
+    navigate()
+    show_more()
+
+    add_produit(nb_elem_cart)
+
+    open_cart(nb_elem_cart)
+
+    
+    update_prix()
 
     
    

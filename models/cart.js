@@ -22,14 +22,14 @@ module.exports=class Cart {
                 product.qty = 1;
                 cart.products.push(product);
             }
-
+            
             if ((product.taille=='M'))
             {   
                 product.prix +=2;
             }
             if ((product.taille=='L'))
             {   
-                product.prix +=3;
+                product.prix +=4;
             }
             cart.totalPrice += product.prix;
         }
@@ -64,15 +64,15 @@ module.exports=class Cart {
 
             if ((product.taille=='33Cl'))
             {   
-                product.prix +=2;
+                product.prix +=0;
             }
             if ((product.taille=='1L'))
             {   
-                product.prix +=3;
+                product.prix +=1.4;
             }
             if ((product.taille=='2L'))
             {   
-                product.prix +=3;
+                product.prix +=1.8;
             }
             cart.totalPrice += product.prix;
         }

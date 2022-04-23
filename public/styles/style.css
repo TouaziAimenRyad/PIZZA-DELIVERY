@@ -265,11 +265,14 @@ body, html {
 #cart-form
 {
     width: 40%;
-    height: 800px;
-    background-color: #f74008;
+    height: auto;
+    border:solid 3px #f86600;
+    border-radius: 15px;
+    background-color: #e0dede;
     margin: auto;
     margin-top: 10%;
     position: relative;
+    padding:15px;
 }
 
 

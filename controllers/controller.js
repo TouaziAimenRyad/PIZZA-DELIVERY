@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid');
 const pool=require('../db_pool/pool')
 const Cart=require('../models/cart')
 
@@ -131,9 +132,9 @@ const commander=(req,res,next)=>
     const nom=req.body.nom
     const prenom=req.body.prenom
     const adresse=req.body.adresse
-    const command_id =23//generate using uuid
+    const command_id =uuidv4()
     const cart=Cart.getCart()
-    console.log(cart)
+    console.log(cart)//insert to database after doing modifs
     res.render('checked_out',{id:command_id,nom:nom,prenom:prenom})
 }
 module.exports={
