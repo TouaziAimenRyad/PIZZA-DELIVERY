@@ -10,7 +10,7 @@
             
                 <form id="form_id_<%= x.nom.replaceAll(' ','_') %>" class="add_pizza_form" action="/menu/add_pizza_to_cart" method="post">
                     <input type="hidden" name="nom_produit" value="<%= x.nom %>">
-                    <select name='taille' class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                    <select name='taille' class="custom-select mr-sm-2" >
                         <option selected value="S">Small</option>
                         <option value="M">Meduim</option>
                         <option value="L" >Large</option>

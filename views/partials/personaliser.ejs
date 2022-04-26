@@ -1,0 +1,38 @@
+<form id="add_pizza_perso_form" action="/menu/add_pizza_perso">  
+    <fieldset>  
+        <legend>Sauce</legend>  
+        <% ingrediant.sauce.forEach(x=>{ %>
+        <input type="radio" name="sauce" value="<%= x.nom %>" ><%= x.nom %><br>  
+        <% }) %>
+    </fieldset>  
+    <br> 
+    <fieldset>  
+        <legend>Viande</legend> 
+        <% ingrediant.viande.forEach(x=>{ %> 
+        <input type="checkbox" name="viande" value="<%= x.nom %>" ><%= x.nom %><br>  
+        <% }) %>
+    </fieldset>  
+    <br> 
+    <fieldset>  
+        <legend>Fromage</legend>  
+        <% ingrediant.fromage.forEach(x=>{ %> 
+        <input type="checkbox" name="fromage" value="<%= x.nom %>" ><%= x.nom %><br>
+        <% }) %>
+          
+    </fieldset>  
+    <br>  
+    <fieldset>  
+        <legend>Legume</legend> 
+        <% ingrediant.legume.forEach(x=>{ %>  
+        <input type="checkbox" name="legume" value="<%= x.nom %>" ><%= x.nom %><br> 
+         <% }) %>
+    </fieldset>  
+    <br> 
+    <select name='taille' class="custom-select mr-sm-2" >
+        <option selected value="S">Small</option>
+        <option value="M">Meduim</option>
+        <option value="L" >Large</option>
+    </select>
+    <input type="submit" value="add to cart">  
+    
+</form>  

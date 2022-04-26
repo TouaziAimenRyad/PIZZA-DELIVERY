@@ -115,7 +115,7 @@ const add_produit=function(nb_elem_cart)
         e.preventDefault();
         let url = $(this).attr( "action" );
         let form_id=($(this).attr("id"))
-        let value=($('#'+form_id+' input').val())
+        let value=($('#'+form_id+' input').val()) // replace using ids with this.find() cleaner
         let value2=($('#'+form_id+' select').val())
         $.post(url, {nom_produit:value,taille:value2});
         nb_elem_cart++
@@ -148,6 +148,24 @@ const add_produit=function(nb_elem_cart)
         $.post(url, {nom_produit:value,taille:value2});
         nb_elem_cart++
         $("#cart p").html(nb_elem_cart)
+        
+    });
+
+    $('#add_pizza_perso_form').submit(function (e) { 
+        e.preventDefault();
+        let url = $(this).attr( "action" );
+        const sauce= $(this).find('input[name="sauce"]:checked').val()// turn it into radio btn
+        let fromage=[]
+        $(this).find('input[name="fromage"]:checked').each(function(){fromage.push(this.value)})
+        let viande=[]
+        $(this).find('input[name="viande"]:checked').each(function(){viande.push(this.value)})
+        let legume=[]
+        $(this).find('input[name="legume"]:checked').each(function(){legume.push(this.value)})
+        let taille =$(this).find('select').val()
+        let ingrediants=[sauce,...fromage,...viande,...legume]
+        $.post(url, {ingrediants:ingrediants,taille:taille});
+        
+        // in the backk end get the price ig it's too much in the front
         
     });
 }

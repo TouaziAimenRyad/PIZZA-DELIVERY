@@ -91,6 +91,10 @@ module.exports=class Cart {
             }
             
         }
+        if(product.type=="pizza perso")
+        {
+            console.log(product)
+        }
     
 
     
