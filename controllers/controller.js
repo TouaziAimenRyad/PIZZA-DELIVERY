@@ -18,7 +18,7 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
         const ingrediant_viande=await pool.query('SELECT * FROM ingrediant WHERE type=\'viande\'')
         const ingrediant_legume=await pool.query('SELECT * FROM ingrediant WHERE type=\'legume\'')
         const ingrediant={sauce:ingrediant_sauce.rows,viande:ingrediant_viande.rows,fromage:ingrediant_fromage.rows,legume:ingrediant_legume.rows}
-        res.render('menu',{entree:entree.rows,pizza:pizza.rows,boisson:boisson.rows,sauce:sauce.rows,ingrediant:ingrediant})
+        res.render('menu',{entree:entree.rows,pizza:pizza.rows,boisson:boisson.rows,sauce:sauce.rows,ingrediant:ingrediant,nb_cart:0})
     }
     catch (err)
     {
@@ -32,6 +32,7 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
 const get_cart=(req,res)=>
 {
     cart=Cart.getCart()
+    console.log(cart.products[0].ing)
     res.json(cart)
     res.end()
 
@@ -45,13 +46,12 @@ const add_pizza_to_cart=async(req,res,next)=>
         const pizza = await pool.query('SELECT nom ,prix FROM pizza WHERE pizza.nom=\''+req.body.nom_produit+'\'')
         let produit =pizza.rows[0]
         produit.ing={}
-        produit.ing.sauce=(await pool.query('select ingrediant.nom,ingrediant.prix,ingrediant.type from (pizza join pizza_ing on pizza.nom=pizza_ing.pizza_nom) join ingrediant on pizza_ing.ing_nom=ingrediant.nom where pizza.nom=\''+produit.nom+'\' and ingrediant.type=\'sauce\'')).rows
+        produit.ing.sauce=(await pool.query('select ingrediant.nom,ingrediant.prix,ingrediant.type from (pizza join pizza_ing on pizza.nom=pizza_ing.pizza_nom) join ingrediant on pizza_ing.ing_nom=ingrediant.nom where pizza.nom=\''+produit.nom+'\' and ingrediant.type=\'sauce\'')).rows[0]
         produit.ing.fromage=(await pool.query('select ingrediant.nom,ingrediant.prix,ingrediant.type  from (pizza join pizza_ing on pizza.nom=pizza_ing.pizza_nom) join ingrediant on pizza_ing.ing_nom=ingrediant.nom where pizza.nom=\''+produit.nom+'\' and ingrediant.type=\'fromage\'')).rows
         produit.ing.viande=(await pool.query('select ingrediant.nom,ingrediant.prix,ingrediant.type  from (pizza join pizza_ing on pizza.nom=pizza_ing.pizza_nom) join ingrediant on pizza_ing.ing_nom=ingrediant.nom where pizza.nom=\''+produit.nom+'\' and ingrediant.type=\'viande\'')).rows
         produit.ing.legume=(await pool.query('select ingrediant.nom,ingrediant.prix,ingrediant.type  from (pizza join pizza_ing on pizza.nom=pizza_ing.pizza_nom) join ingrediant on pizza_ing.ing_nom=ingrediant.nom where pizza.nom=\''+produit.nom+'\' and ingrediant.type=\'legume\'')).rows
         produit.type='pizza'
         produit.taille=req.body.taille
-        console.log(produit.ing)
         Cart.save(produit)
        
         
@@ -119,6 +119,7 @@ const add_boisson_to_cart=async(req,res,next)=>
 
 const add_perso_pizza_to_cart=async(req,res,next)=>
 {   
+    
     let sauce
     let fromage=[]
     let viande=[]
@@ -137,27 +138,28 @@ const add_perso_pizza_to_cart=async(req,res,next)=>
                 console.log(e)
                 res.send('data base errr')
             }
-            
-            switch (y.type) {
-                case 'sauce':
-                    sauce=(y)
-                break;
-                case 'fromage':
-                    fromage.push(y)
-                break;
-                case 'viande':
-                    viande.push(y)
-                break;
-                case 'legume':
-                    legume.push(y)
-                break;
-            
+            if(y!=undefined)
+            {
+                switch (y.type) {
+                    case 'sauce':
+                        sauce=(y)
+                    break;
+                    case 'fromage':
+                        fromage.push(y)
+                    break;
+                    case 'viande':
+                        viande.push(y)
+                    break;
+                    case 'legume':
+                        legume.push(y)
+                    break;
+                
+                }
             }
+            
         }))
     }
-    //when you change the prices in data base don't forget inside this function
-    let new_pizza=pizza_perso.create_pizza(sauce,viande,fromage,legume,req.body.taille)
-    console.log(new_pizza)
+    let new_pizza=await pizza_perso.create_pizza(sauce,viande,fromage,legume,req.body.taille)
     Cart.save(new_pizza)
     res.end()
 }

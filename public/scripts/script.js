@@ -99,19 +99,20 @@ const delete_item_from_cart=function(nb_elem)
             tl=undefined
         }
        
+        $.post("/menu/delete_from_cart",{nom_produit:product_name,taille:tl});
         nb_elem--
         $("#cart p").html(nb_elem)
-        $.post("/menu/delete_from_cart",{nom_produit:product_name,taille:tl});
 
     })   
 }
 
 
 ///////////////////////////////////////
-const add_produit=function(nb_elem_cart)
+const add_produit=function()
 {
     //using this gave me the possibilité to keep the cart filled even after reloading however i added a reset function that triggers every time we reload the menu add loading animation to wait for the cart to be ready
     $('.add_pizza_form').submit(function (e) { 
+        let nb_elem_cart=parseInt($("#cart p").html())
         e.preventDefault();
         let url = $(this).attr( "action" );
         let form_id=($(this).attr("id"))
@@ -124,6 +125,7 @@ const add_produit=function(nb_elem_cart)
     });
     
     $('.add_entree_form').submit(function (e) { 
+        let nb_elem_cart=parseInt($("#cart p").html())
         e.preventDefault();
         let url = $(this).attr( "action" );
         let form_id=($(this).attr("id"))
@@ -140,6 +142,7 @@ const add_produit=function(nb_elem_cart)
     });
    
     $('.add_boisson_form').submit(function (e) { 
+        let nb_elem_cart=parseInt($("#cart p").html())
         e.preventDefault();
         let url = $(this).attr( "action" );
         let form_id=($(this).attr("id"))
@@ -152,6 +155,7 @@ const add_produit=function(nb_elem_cart)
     });
 
     $('#add_pizza_perso_form').submit(function (e) { 
+        let nb_elem_cart=parseInt($("#cart p").html())
         e.preventDefault();
         let url = $(this).attr( "action" );
         const sauce= $(this).find('input[name="sauce"]:checked').val()// turn it into radio btn
@@ -164,6 +168,8 @@ const add_produit=function(nb_elem_cart)
         let taille =$(this).find('select').val()
         let ingrediants=[sauce,...fromage,...viande,...legume]
         $.post(url, {ingrediants:ingrediants,taille:taille});
+        nb_elem_cart++
+        $("#cart p").html(nb_elem_cart)
         
         // in the backk end get the price ig it's too much in the front
         
@@ -173,13 +179,15 @@ const add_produit=function(nb_elem_cart)
 
 
 //////////////////////////////////////
-const open_cart=function(nb_elem_cart)
+const open_cart=function()
 {
     $('#cart').click((e)=>{
         $.get("/menu/get-cart","json").done(function(data){
+            let nb_elem_cart=parseInt($("#cart p").html())
+
             let layout=""
             data.products.forEach(element => {
-                if(element.type=='pizza')
+                if(element.type=='pizza'||element.type=='pizza perso')
                 {
                     layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem p\"> <h3><span>"+element.nom+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><h4 class=\"tl\"> taille: "+element.taille+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
                 }
@@ -272,14 +280,14 @@ const update_prix=function()
 
 
 $(document).ready(()=>{
-    let nb_elem_cart=0;
+     let nb_elem_cart=parseInt($("#cart p").html())
   
     navigate()
     show_more()
 
-    add_produit(nb_elem_cart)
+    add_produit()
 
-    open_cart(nb_elem_cart)
+    open_cart()
 
     
     update_prix()

@@ -2,7 +2,7 @@
     <fieldset>  
         <legend>Sauce</legend>  
         <% ingrediant.sauce.forEach(x=>{ %>
-        <input type="radio" name="sauce" value="<%= x.nom %>" ><%= x.nom %><br>  
+        <input type="radio" name="sauce" value="<%= x.nom %>" required ><%= x.nom %><br>  
         <% }) %>
     </fieldset>  
     <br> 
