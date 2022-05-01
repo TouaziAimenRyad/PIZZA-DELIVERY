@@ -49,9 +49,9 @@ const create_pizza=async(sauce ,viande , fromage , legume,taille)=>
     let prix=5
     let x=[sauce,...viande,...fromage,...legume]
     x==undefined||x==[] ? prix=5 : x.map(y=>{prix+=y.prix})
-    let pizza={type:'pizza perso',nom:nom,ing:{},taille:taille,prix:prix} // generate nom 
-    sauce==undefined ? (pizza.ing.sauce={ nom: 'sauce barbecue', type: 'sauce', prix: 0.4 }) : (pizza.ing.sauce=sauce)
-    fromage.length==0 ? pizza.ing.fromage=[{nom:'mozzarella', type: 'fromage', prix: 0.4}] : pizza.ing.fromage=fromage
+    let pizza={type:'pizza perso',nom:nom,ing:{},taille:taille,prix:prix} 
+    pizza.ing.sauce=sauce
+    fromage.length==0 ? pizza.ing.fromage=[] : pizza.ing.fromage=fromage
     viande.length==0 ? pizza.ing.viande=[] : pizza.ing.viande=viande
     legume.length==0 ? pizza.ing.legume=[] : pizza.ing.legume=legume
 

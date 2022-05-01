@@ -32,7 +32,7 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
 const get_cart=(req,res)=>
 {
     cart=Cart.getCart()
-    console.log(cart.products[0].ing)
+    //console.log(cart.products[0].ing)
     res.json(cart)
     res.end()
 

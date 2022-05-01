@@ -170,6 +170,7 @@ const add_produit=function()
         $.post(url, {ingrediants:ingrediants,taille:taille});
         nb_elem_cart++
         $("#cart p").html(nb_elem_cart)
+        $(this).find("input").prop('checked',false)
         
         // in the backk end get the price ig it's too much in the front
         
