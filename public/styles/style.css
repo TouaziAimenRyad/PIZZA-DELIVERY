@@ -4,6 +4,12 @@ body, html {
 }
 
 
+select
+{
+    margin: 2% 0;
+}
+
+
 .title
 {
   text-align: center;
@@ -186,6 +192,7 @@ body, html {
 	font-size:22px;
     padding-left: 10px;    
     transition: all 0.3s ease-out;
+    
 }
 
 
@@ -205,14 +212,15 @@ body, html {
   display: block;
   box-sizing: border-box;
   padding: 8px;
-  width: 60%;
-  max-width: 200px;
+  width: 100%;
   background: rgba(248, 103, 0, 0.5);
   border-radius: 8px;
   text-align: center;
   text-decoration: none;
   letter-spacing: 1px;
   transition: all 0.3s ease-out;
+  border-radius:28px;
+  margin-bottom: 5px;
 }
 .item-body .personaliser:hover
 {
@@ -340,4 +348,49 @@ body, html {
     border-radius: 10px;
     background-color: #f86600;
     box-shadow: 0px 10px 13px -7px #000000, 16px 26px 17px 3px rgba(0,0,0,0.35);
+}
+
+
+/*-----------------------------------------------------------------------------------------------**/
+
+#add_pizza_perso_form
+{
+    width: 90%;
+    margin: 20px auto;
+    background-color: rgb(245, 245, 245);
+    border: solid 1px #555454;
+    border-radius: 10px;
+    padding: 1%;
+    
+}
+
+#add_pizza_perso_form .ings
+{
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+#add_pizza_perso_form select
+{   
+    width: 40%;
+    display: block;
+    
+}
+#add_pizza_perso_form .add
+{
+    width: 30%;
+    
+}
+#add_pizza_perso_form .pizza_ing
+{
+    width: 90%;
+    margin: 1%;
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: rgb(216, 216, 216);
+}
+#add_pizza_perso_form .pizza_ing h3
+{
+    width: fit-content;
+    margin: 1% auto;
 }

@@ -1,0 +1,101 @@
+
+<form id="mega" class="add_menu_form" action="/menu/add_pre_menu">
+    <p>1 pizza M 1 entree 1 boisson 33cl</p>
+    <div id="mega_entree" class="menu_selection">
+        <h4>entree</h4>
+        <% entree.forEach(y=>{ %>
+            <input type="checkbox" name="mega_entree" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="mega_sauce" class="menu_selection">
+        <h4>sauce</h4>
+        <% sauce.forEach(y=>{ %>
+            <input type="checkbox" name="mega_sauce" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="mega_pizza" class="menu_selection">
+        <h4>pizza</h4>
+        <% pizza.forEach(y=>{ %>
+            <input type="checkbox" name="mega_pizza" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="mega_boisson" class="menu_selection">
+        <h4>boisson</h4>
+        <% boisson.forEach(y=>{ %>
+            <input type="checkbox" name="mega_boisson" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <button type="submit" class="add">+</button>
+
+</form>
+
+
+
+
+
+
+<form id="giga" class="add_menu_form" action="/menu/add_pre_menu">
+    <p>2 pizza M 2 entree 1 boisson 1l</p>
+    <div id="giga_entree" class="menu_selection">
+        <h4>entree</h4>
+        <% entree.forEach(y=>{ %>
+            <input type="checkbox" name="giga_entree" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="giga_sauce" class="menu_selection">
+        <h4>sauce</h4>
+        <% sauce.forEach(y=>{ %>
+            <input type="checkbox" name="giga_sauce" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="giga_pizza" class="menu_selection">
+        <h4>pizza</h4>
+        <% pizza.forEach(y=>{ %>
+            <input type="checkbox" name="giga_pizza" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="giga_boisson" class="menu_selection">
+        <h4>boisson</h4>
+        <% boisson.forEach(y=>{ %>
+            <input type="checkbox" name="giga_boisson"value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    
+    <button type="submit" class="add">+</button>
+</form>
+
+
+
+
+
+<form id="extra" class="add_menu_form" action="/menu/add_pre_menu">
+    <p>2 pizza L 4 entree 1 boisson 2l</p>
+    
+    <div id="extra_entree" class="menu_selection">
+        <h4>entree</h4>
+        <% entree.forEach(y=>{ %>
+            <input type="checkbox" name="extra_entree" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="extra_sauce" class="menu_selection">
+        <h4>sauce</h4>
+        <% sauce.forEach(y=>{ %>
+            <input type="checkbox" name="extra_sauce" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="extra_pizza" class="menu_selection">
+        <h4>pizza</h4>
+        <% pizza.forEach(y=>{ %>
+            <input type="checkbox" name="extra_pizza" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+    <div id="extra_boisson" class="menu_selection">
+        <h4>boisson</h4>
+        <% boisson.forEach(y=>{ %>
+            <input type="checkbox" name="extra_boisson" value="<%= y.nom %>"><%= y.nom %> <br>
+        <% }) %>
+    </div>
+
+    <button type="submit" class="add">+</button>
+</form>
+

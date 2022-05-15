@@ -27,7 +27,7 @@ const toggle_hide_menu=function(active,hidden)
 }
 
 
-/////////////////////////
+////////////////////////////
 const navigate=function()
 {
     $('#pizza-btn').click((e)=>{
@@ -70,6 +70,79 @@ const close_cart=function()
     
 }
 
+////////////////////////////////////////////
+
+const select_limit=function()
+{
+    const limit=function(limit,target,id)
+    {
+        
+        let input=target.find("input[name="+id+"]");
+        input.change(function (e) { 
+            if (target.find("input:checked").length==limit)
+            {
+                target.find("input:checkbox:not(:checked)").attr("disabled", true);
+            }
+            else
+            {   
+                target.find("input:checkbox:not(:checked)").attr("disabled", false);
+            }
+            
+        });
+      
+    }
+    
+    $.each($(".menu_selection"),function(index,elem){
+        let id=elem.id
+        let input=$("#"+id)
+        switch (id) {
+            case 'mega_entree':
+                limit(1,input,id)
+            break;
+            case 'mega_sauce':
+                limit(1,input,id)
+            break;
+            case 'mega_pizza':
+                limit(1,input,id)
+            break;
+            case 'mega_boisson':
+                limit(1,input,id)
+            break;
+            case 'giga_entree':
+                limit(2,input,id)
+            break;
+            case 'giga_sauce':
+                limit(2,input,id)
+            break;
+            case 'giga_pizza':
+                limit(4,input,id)
+            break;
+            case 'giga_boisson':
+                limit(1,input,id)
+            break;
+            case 'extra_entree':
+                limit(4,input,id)
+            break;
+            case 'extra_sauce':
+                limit(4,input,id)
+            break;
+            case 'extra_pizza':
+                limit(4,input,id)
+            break;
+            case 'extra_boisson':
+                limit(1,input,id)
+            break;
+        
+            default:
+                break;
+        }
+
+    })
+    
+
+
+    
+}
 
 ////////////////////////////////////////////
 const delete_item_from_cart=function(nb_elem)
@@ -107,7 +180,7 @@ const delete_item_from_cart=function(nb_elem)
 }
 
 
-///////////////////////////////////////
+//////////////////////////////////////////
 const add_produit=function()
 {
     //using this gave me the possibilité to keep the cart filled even after reloading however i added a reset function that triggers every time we reload the menu add loading animation to wait for the cart to be ready
@@ -133,10 +206,11 @@ const add_produit=function()
         let value2=($('#'+form_id+' select').val())
         $.post(url, {nom_produit:value1,sauce:value2});
         nb_elem_cart++
-        if(value2!="Choisir une sauce gratuite")
+        if(value2!=null)
         {
             nb_elem_cart++
         }
+       
         $("#cart p").html(nb_elem_cart)
         
     });
@@ -175,6 +249,29 @@ const add_produit=function()
         // in the backk end get the price ig it's too much in the front
         
     });
+
+
+    $('.add_menu_form').submit(function (e) { 
+        
+        let id =$(this).attr('id')
+        switch (id) {
+            case "mega":
+                
+            break;
+
+            case "giga":
+                
+            break;
+
+            case "extre":
+                
+            break;
+        
+            default:
+            break;
+        }
+    
+    })
 }
 
 
@@ -290,9 +387,10 @@ $(document).ready(()=>{
 
     open_cart()
 
-    
+
     update_prix()
 
+    select_limit()
     
    
 

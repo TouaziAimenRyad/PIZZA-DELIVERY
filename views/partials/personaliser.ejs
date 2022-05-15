@@ -1,38 +1,43 @@
 <form id="add_pizza_perso_form" action="/menu/add_pizza_perso">  
-    <fieldset>  
-        <legend>Sauce</legend>  
-        <% ingrediant.sauce.forEach(x=>{ %>
-        <input type="radio" name="sauce" value="<%= x.nom %>" required ><%= x.nom %><br>  
-        <% }) %>
-    </fieldset>  
-    <br> 
-    <fieldset>  
-        <legend>Viande</legend> 
-        <% ingrediant.viande.forEach(x=>{ %> 
-        <input type="checkbox" name="viande" value="<%= x.nom %>" ><%= x.nom %><br>  
-        <% }) %>
-    </fieldset>  
-    <br> 
-    <fieldset>  
-        <legend>Fromage</legend>  
-        <% ingrediant.fromage.forEach(x=>{ %> 
-        <input type="checkbox" name="fromage" value="<%= x.nom %>" ><%= x.nom %><br>
-        <% }) %>
+    <div class="ings d-flex flex-column flex-sm-column flex-md-row justify-content-around align-items-center align-items-md-stretch ">
+        <div class="pizza_ing"> 
+                <h3>Sauces</h3> 
+                <% ingrediant.sauce.forEach(x=>{ %>
+                    <input type="radio" name="sauce" value="<%= x.nom %>" required ><%= x.nom %><br>  
+                <% }) %>
+        </div>  
+            
           
-    </fieldset>  
-    <br>  
-    <fieldset>  
-        <legend>Legume</legend> 
-        <% ingrediant.legume.forEach(x=>{ %>  
-        <input type="checkbox" name="legume" value="<%= x.nom %>" ><%= x.nom %><br> 
-         <% }) %>
-    </fieldset>  
-    <br> 
+        <div class="pizza_ing">
+                <h3>Viandes</h3> 
+                <% ingrediant.viande.forEach(x=>{ %> 
+                    <input type="checkbox" name="viande" value="<%= x.nom %>" ><%= x.nom %><br>  
+                <% }) %>
+        </div>  
+            
+          
+        <div class="pizza_ing">  
+                <h3>Fromages</h3>
+                <% ingrediant.fromage.forEach(x=>{ %> 
+                    <input type="checkbox" name="fromage" value="<%= x.nom %>" ><%= x.nom %><br>
+                <% }) %>
+        </div>  
+            
+            
+        <div class="pizza_ing">
+                <h3>Legumes</h3> 
+                <% ingrediant.legume.forEach(x=>{ %>  
+                    <input type="checkbox" name="legume" value="<%= x.nom %>" ><%= x.nom %><br> 
+                <% }) %>
+        </div>  
+    </div>    
+    
+        
     <select name='taille' class="custom-select mr-sm-2" >
         <option selected value="S">Small</option>
         <option value="M">Meduim</option>
         <option value="L" >Large</option>
     </select>
-    <input type="submit" value="add to cart">  
+    <input class="add" type="submit" value="+">  
     
 </form>  

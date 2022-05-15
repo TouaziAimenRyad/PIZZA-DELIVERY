@@ -9,8 +9,8 @@
             <p class="menu-item-text"><%= x.description %></p>
             <form id="form_id_<%= x.nom.replaceAll(' ','_') %>" class="add_entree_form" action="/menu/add_entree_to_cart" method="post">
                 <input type="hidden" name="nom_produit" value="<%= x.nom %>">
-                <select name='sauce' class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                    <option selected>Choisir une sauce gratuite</option>
+                <select name='sauce' class="custom-select mr-sm-2" >
+                    <option disabled selected>Choisir une sauce gratuite</option>
                     <% sauce.forEach(y=>{ %>
                     <option  value="<%= y.nom %>"><%= y.nom %></option>
                      <% }) %>
