@@ -174,6 +174,7 @@ const add_menu_to_cart=async(req,res,next)=>
     menu.sauce=req.body.sauce
     menu.pizza=req.body.pizza
     menu.boisson=req.body.boisson
+    console.log(menu)
     Cart.save(menu)
     
 

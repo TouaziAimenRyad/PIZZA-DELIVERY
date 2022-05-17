@@ -74,27 +74,27 @@
   
         
           <div id="sub-menu" >
-            <div id="entree" class="menu-sec  active-menu">
+            <div id="entree" class="menu-sec  active-menu" style="padding-bottom: 50px;">
               <!-- generate with jquery or ejs -->
               <%- include('partials/entree',{entree:entree,sauce:sauce}); %>
               </div>
-            <div id="pizza" class="menu-sec hidden" >
+            <div id="pizza" class="menu-sec hidden" style="padding-bottom: 50px;" >
               <%- include('partials/pizza',{pizza:pizza}); %>
               
     
             </div>
             
-            <div id="boisson" class="menu-sec hidden" >
+            <div id="boisson" class="menu-sec hidden" style="padding-bottom: 50px;">
               <%- include('partials/boisson',{boisson:boisson}); %>
     
             </div>
             
-            <div id="pre-menu" class="menu-sec hidden" >
+            <div id="pre-menu" class="hidden" style="padding-bottom: 50px;" >
               <%- include('partials/pre_menu',{pizza:pizza,entree:entree,sauce:sauce,boisson:boisson}); %>
     
             </div>
   
-            <div id="perso" class="menu-sec hidden" >
+            <div id="perso" class="hidden" style="padding-bottom: 50px;" >
               <%- include('partials/personaliser',{ingrediant:ingrediant}); %>
             </div>
           </div>

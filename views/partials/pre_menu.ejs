@@ -1,31 +1,43 @@
 
 <form id="mega" class="add_menu_form" action="/menu/add_pre_menu">
-    <p>1 pizza M 1 entree 1 boisson 33cl</p>
+    <h2 class="d-flex flex_row justify-content-between"><span class="menu-item-name">Menu MEGA </span><span class="menu-item-price">18$</span></h2>
+    <p>1 pizza de taille M  1 entree avec une sauce au choix  1 boisson 33cl </p>
     <div id="mega_entree" class="menu_selection">
-        <h4>entree</h4>
-        <% entree.forEach(y=>{ %>
-            <input type="checkbox" name="mega_entree" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>entree</h3>
+        <div class=" d-flex flex-wrap">
+            <% entree.forEach(y=>{ %>
+                <input type="checkbox" id="check_mega_<%= y.nom %>" name="mega_entree" value="<%= y.nom %>"><label for="check_mega_<%= y.nom %>"><img src="assets/entree/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label>
+            <% }) %>
+        </div>
+        
     </div>
-    <div id="mega_sauce" class="menu_selection">
-        <h4>sauce</h4>
-        <% sauce.forEach(y=>{ %>
-            <input type="checkbox" name="mega_sauce" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+    <div id="mega_sauce" class="menu_selection ">
+        <h3>sauce</h3>
+        <div class=" d-flex flex-wrap">
+            <% sauce.forEach(y=>{ %>
+                <input type="checkbox" id="check_mega_<%= y.nom %>" name="mega_sauce" value="<%= y.nom %>"><label for="check_mega_<%= y.nom %>"><img src="assets/sauce/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
+        
     </div>
     <div id="mega_pizza" class="menu_selection">
-        <h4>pizza</h4>
-        <% pizza.forEach(y=>{ %>
-            <input type="checkbox" name="mega_pizza" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>pizza</h3>
+        <div class=" d-flex flex-wrap">
+            <% pizza.forEach(y=>{ %>
+                <input type="checkbox" id="check_mega_<%= y.nom %>" name="mega_pizza" value="<%= y.nom %>"><label for="check_mega_<%= y.nom %>"><img src="assets/pizza/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
     </div>
     <div id="mega_boisson" class="menu_selection">
-        <h4>boisson</h4>
-        <% boisson.forEach(y=>{ %>
-            <input type="checkbox" name="mega_boisson" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>boisson</h3>
+        <div class=" d-flex flex-wrap">
+            <% boisson.forEach(y=>{ %>
+                <input type="checkbox" id="check_mega_<%= y.nom %>" name="mega_boisson" value="<%= y.nom %>"><label for="check_mega_<%= y.nom %>"><img src="assets/boisson/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label>  
+            <% }) %>
+        </div>
+        
     </div>
-    <button type="submit" class="add">+</button>
+   <div class="add_cont" > <button type="submit" class="add">+</button></div>
 
 </form>
 
@@ -35,33 +47,46 @@
 
 
 <form id="giga" class="add_menu_form" action="/menu/add_pre_menu">
-    <p>2 pizza M 2 entree 1 boisson 1l</p>
+    <h2 class="d-flex flex_row justify-content-between"><span class="menu-item-name">Menu GIGA</span><span class="menu-item-price">22$</span></h2>
+    <p>2 pizza de taille M  2 entrees avec deux sauces au choix  1 boisson 1l </p>
     <div id="giga_entree" class="menu_selection">
-        <h4>entree</h4>
-        <% entree.forEach(y=>{ %>
-            <input type="checkbox" name="giga_entree" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>entree</h3>
+        <div class=" d-flex flex-wrap">
+            <% entree.forEach(y=>{ %>
+                <input type="checkbox" id="check_giga_<%= y.nom %>" name="giga_entree" value="<%= y.nom %>"><label for="check_giga_<%= y.nom %>"><img src="assets/entree/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
+        
     </div>
     <div id="giga_sauce" class="menu_selection">
-        <h4>sauce</h4>
-        <% sauce.forEach(y=>{ %>
-            <input type="checkbox" name="giga_sauce" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>sauce</h3>
+        <div class=" d-flex flex-wrap">
+            <% sauce.forEach(y=>{ %>
+                <input type="checkbox" id="check_giga_<%= y.nom %>" name="giga_sauce" value="<%= y.nom %>"><label for="check_giga_<%= y.nom %>"><img src="assets/sauce/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
+        
     </div>
     <div id="giga_pizza" class="menu_selection">
-        <h4>pizza</h4>
-        <% pizza.forEach(y=>{ %>
-            <input type="checkbox" name="giga_pizza" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>pizza</h3>
+        <div class=" d-flex flex-wrap">
+            <% pizza.forEach(y=>{ %>
+                <input type="checkbox" id="check_giga_<%= y.nom %>" name="giga_pizza" value="<%= y.nom %>"><label for="check_giga_<%= y.nom %>"><img src="assets/pizza/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
+        
     </div>
     <div id="giga_boisson" class="menu_selection">
-        <h4>boisson</h4>
-        <% boisson.forEach(y=>{ %>
-            <input type="checkbox" name="giga_boisson"value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>boisson</h3>
+        <div class=" d-flex flex-wrap">
+            <% boisson.forEach(y=>{ %>
+                <input type="checkbox" id="check_giga_<%= y.nom %>" name="giga_boisson"value="<%= y.nom %>"><label for="check_giga_<%= y.nom %>"><img src="assets/boisson/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
+        
     </div>
     
-    <button type="submit" class="add">+</button>
+   <div class="add_cont" > <button type="submit" class="add">+</button></div>
 </form>
 
 
@@ -69,33 +94,46 @@
 
 
 <form id="extra" class="add_menu_form" action="/menu/add_pre_menu">
-    <p>2 pizza L 4 entree 1 boisson 2l</p>
+    <h2 class="d-flex flex_row justify-content-between "><span class="menu-item-name">Menu EXTRA</span> <span class="menu-item-price">24$</span></h2>
+    <p>2 pizza de taille L  4 entree avec 4 sauceS au choix  1 boisson 2l </p>
     
     <div id="extra_entree" class="menu_selection">
-        <h4>entree</h4>
-        <% entree.forEach(y=>{ %>
-            <input type="checkbox" name="extra_entree" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>entree</h3>
+        <div class=" d-flex flex-wrap">
+            <% entree.forEach(y=>{ %>
+                <input type="checkbox" id="check_extra_<%= y.nom %>" name="extra_entree" value="<%= y.nom %>"><label for="check_extra_<%= y.nom %>"><img src="assets/entree/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
+        
     </div>
     <div id="extra_sauce" class="menu_selection">
-        <h4>sauce</h4>
-        <% sauce.forEach(y=>{ %>
-            <input type="checkbox" name="extra_sauce" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>sauce</h3>
+        <div class=" d-flex flex-wrap">
+            <% sauce.forEach(y=>{ %>
+                <input type="checkbox" id="check_extra_<%= y.nom %>" name="extra_sauce" value="<%= y.nom %>"><label for="check_extra_<%= y.nom %>"><img src="assets/sauce/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label>
+            <% }) %>
+        </div>
+        
     </div>
     <div id="extra_pizza" class="menu_selection">
-        <h4>pizza</h4>
-        <% pizza.forEach(y=>{ %>
-            <input type="checkbox" name="extra_pizza" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>pizza</h3>
+        <div class=" d-flex flex-wrap">
+            <% pizza.forEach(y=>{ %>
+                <input type="checkbox" id="check_extra_<%= y.nom %>" name="extra_pizza" value="<%= y.nom %>"><label for="check_extra_<%= y.nom %>"><img src="assets/pizza/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
+        
     </div>
     <div id="extra_boisson" class="menu_selection">
-        <h4>boisson</h4>
-        <% boisson.forEach(y=>{ %>
-            <input type="checkbox" name="extra_boisson" value="<%= y.nom %>"><%= y.nom %> <br>
-        <% }) %>
+        <h3>boisson</h3>
+        <div class=" d-flex flex-wrap">
+            <% boisson.forEach(y=>{ %>
+                <input type="checkbox" id="check_extra_<%= y.nom %>"  name="extra_boisson" value="<%= y.nom %>"><label for="check_extra_<%= y.nom %>"><img src="assets/boisson/<%= y.nom %>" alt="<%= y.nom %> "><p><%= y.nom %></p></label> 
+            <% }) %>
+        </div>
+        
     </div>
 
-    <button type="submit" class="add">+</button>
+   <div class="add_cont" > <button type="submit" class="add">+</button></div>
 </form>
 

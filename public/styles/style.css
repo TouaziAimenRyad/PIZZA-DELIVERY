@@ -182,7 +182,7 @@ select
 {
     width: 100%;
     height: 35px;
-    margin: 0 ;
+    margin: 0  ;
     justify-self: center;
 	background-color:#f86600;
 	border-radius:28px;
@@ -378,7 +378,7 @@ select
 }
 #add_pizza_perso_form .add
 {
-    width: 30%;
+    width: 100%;
     
 }
 #add_pizza_perso_form .pizza_ing
@@ -393,4 +393,121 @@ select
 {
     width: fit-content;
     margin: 1% auto;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*check box styles for add menu */
+.add_menu_form,#add_pizza_perso_form
+{
+    background-color: rgb(245, 245, 245);
+    width:60%;
+    padding: 2%;
+    padding-bottom: 1%;
+    margin: 20px auto;
+    /*max-width:350px ;*/
+    min-width: 300px;
+    border: solid #555454 1px;
+    border-radius: 10px;
+}
+
+.add_menu_form p {
+    width: fit-content;
+    margin: auto;
+}
+.add_menu_form .add_cont ,#add_pizza_perso_form .add_cont
+{
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.add_menu_form .menu_selection,#add_pizza_perso_form .pizza_ing
+{
+    width: 90%;
+    height: fit-content;
+    border: solid 1px rgb(0, 0, 0); 
+    border-radius: 15px;
+    margin:2% auto ;
+    padding: 1%;
+    background-color: #cccccc;
+}
+
+.add_menu_form .menu_selection h3 ,#add_pizza_perso_form .pizza_ing h3
+{
+    width: fit-content;
+    margin: auto;
+}
+
+
+.add_menu_form input[type="checkbox"],#add_pizza_perso_form input
+{
+    display: none;
+}
+
+.add_menu_form label ,#add_pizza_perso_form label
+{
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    width: fit-content;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+.add_menu_form label::before ,#add_pizza_perso_form label::before
+{
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+
+.add_menu_form label p,#add_pizza_perso_form label p
+{
+    width: 120px;
+}
+
+.add_menu_form label img, #add_pizza_perso_form label img
+{
+    height: 100px;
+    width: 100%;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+  
+.add_menu_form :checked+label ,#add_pizza_perso_form :checked+label
+{
+    border-color: #ddd;
+}
+  
+.add_menu_form :checked+label::before ,#add_pizza_perso_form :checked+label::before 
+{
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+}
+  
+.add_menu_form :checked+label img ,#add_pizza_perso_form :checked+label img
+{
+    transform: scale(0.9);
+    box-shadow: 0 0 5px #333;
+    z-index: -1;
 }
