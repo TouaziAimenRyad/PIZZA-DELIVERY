@@ -9,6 +9,9 @@ server.set('view engine','ejs')
 
 server.use('/menu',routes)
 
+server.get('/',(req,res)=>{
+    res.redirect('/menu')
+})
 
 server.use((req, res) => {
     res.status(404).send('404')

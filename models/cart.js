@@ -141,7 +141,7 @@ module.exports=class Cart {
             
         }
 
-
+        //for the personlised we don't wanna comapre cuase each of them are unique even if they were the same
         if(product.type=="pizza perso")
         {   
             if(product.taille=='M')
@@ -151,6 +151,25 @@ module.exports=class Cart {
             if(product.taille=='L')
             {
                 product.prix+=4
+            }
+            product.qty = 1;
+            cart.products.push(product);
+            cart.totalPrice += product.prix;
+        }
+
+        if (product.type=="menu")
+        {
+            if(product.subType=="mega")
+            {
+                product.prix=18
+            }
+            if(product.subType=="giga")
+            {
+                product.prix=22
+            }
+            if(product.subType=="extra")
+            {
+                product.prix=24
             }
             product.qty = 1;
             cart.products.push(product);

@@ -164,7 +164,23 @@ const add_perso_pizza_to_cart=async(req,res,next)=>
     res.end()
 }
 
+const add_menu_to_cart=async(req,res,next)=>
+{   
+    let type=req.body.type
+    let menu={}
+    menu.type="menu"
+    menu.subType=type
+    menu.entree=req.body.entree
+    menu.sauce=req.body.sauce
+    menu.pizza=req.body.pizza
+    menu.boisson=req.body.boisson
+    Cart.save(menu)
+    
 
+
+
+    res.end()
+}
 
 const delete_from_cart=(req,res,next)=>
 {
@@ -203,6 +219,7 @@ module.exports={
     add_boisson_to_cart,
     add_entree_to_cart,
     add_pizza_to_cart,
+    add_menu_to_cart,
     add_perso_pizza_to_cart,
     delete_from_cart,
     item_detaill,

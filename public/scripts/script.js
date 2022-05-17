@@ -252,24 +252,42 @@ const add_produit=function()
 
 
     $('.add_menu_form').submit(function (e) { 
-        
+        let nb_elem_cart=parseInt($("#cart p").html())
+        e.preventDefault()
         let id =$(this).attr('id')
-        switch (id) {
-            case "mega":
-                
-            break;
-
-            case "giga":
-                
-            break;
-
-            case "extre":
-                
-            break;
-        
-            default:
-            break;
-        }
+        let type=id
+        let url=$(this).attr('action')
+        let entree=[] 
+        let sauce=[]
+        let pizza=[]
+        let boisson=[]
+        let inputs=$(this).find("input:checked")
+        $.each(inputs, function (indexInArray, valueOfElement) { 
+            let name=valueOfElement.name
+            switch (name) {
+                case id+"_entree":
+                    entree.push(inputs[indexInArray].value)
+                break;
+                case id+"_sauce":
+                    sauce.push(inputs[indexInArray].value)
+                break;
+                case id+"_pizza":
+                    pizza.push(inputs[indexInArray].value)
+                break;
+                case id+"_boisson":
+                    boisson.push(inputs[indexInArray].value)
+                break;
+            
+            }
+             
+        });
+        $.post(url, {type,entree,sauce,boisson,pizza});
+        nb_elem_cart++
+        $("#cart p").html(nb_elem_cart)
+        $(this).find("input").prop('checked',false)
+      
+        console.log(type)
+       
     
     })
 }
@@ -300,6 +318,11 @@ const open_cart=function()
                 if(element.type=="sauce gratuit")
                 {
                     layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem\"> <h3><span>"+element.nom+"</span><span>"+"gratuit"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                }
+                if(element.type="menu")
+                {
+                    layout=layout+"<div class=\"cart-elem\"> <h3><span>"+element.type+" "+element.subType+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+
                 }
                
                 
