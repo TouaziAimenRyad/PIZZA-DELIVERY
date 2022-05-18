@@ -267,6 +267,7 @@ select
     height: 100%;
     background-color: rgba(0, 0, 0, 0.658);
     overflow: auto;
+    
 }
 
 
@@ -279,8 +280,10 @@ select
     background-color: #e0dede;
     margin: auto;
     margin-top: 10%;
+    margin-bottom: 3%;
     position: relative;
-    padding:15px;
+    padding: 2% 0.5% 1% 0.5%;
+    z-index: 4;
 }
 
 
@@ -348,6 +351,59 @@ select
     border-radius: 10px;
     background-color: #f86600;
     box-shadow: 0px 10px 13px -7px #000000, 16px 26px 17px 3px rgba(0,0,0,0.35);
+}
+
+
+#cart-form h2
+{
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 1%;
+}
+
+.cart-elem
+{
+    border: solid 0.5px white ;
+    border-radius: 10px;
+    margin-bottom: 2% ;
+    padding: 1% ;
+    background-color: rgb(190, 190, 190);
+}
+
+.cart-elem .del_space
+{
+    width: 100%;
+    height: fit-content;
+    
+}
+.delete-from-cart img
+{
+    width: 100%;
+}
+.delete-from-cart
+{
+    display: block;
+    width: 5%;
+    margin: auto;
+    transition: all 0.3s ease-out;
+}
+.delete-from-cart:hover
+{
+    width: 8%;
+    cursor: pointer;
+    
+}
+
+#cart-form button[type="submit"]
+{
+    display: block;
+    width: 20%;
+    min-width: fit-content;
+    margin: auto;
+    padding: 1%;
+    height: fit-content;
+    margin-top: 3%;
+    
 }
 
 
@@ -511,3 +567,6 @@ select
     box-shadow: 0 0 5px #333;
     z-index: -1;
 }
+
+
+/*---------------------------------------------------------------------------*/

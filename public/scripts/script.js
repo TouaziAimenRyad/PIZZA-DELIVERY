@@ -149,10 +149,22 @@ const delete_item_from_cart=function(nb_elem)
 {
     $(".delete-from-cart").click(function()
     {
-        let parent=$(this).parent()
+        let parent=$(this).parent().parent()
         let product_name=parent.attr("id")
         let qt_elem=parent.find(".qty")
         let qt=parseInt(qt_elem.html().match(/(\d+)/)[0])
+        let prix_tot=parseFloat($("#cart-form #prix_tot").html().match(/(\d+)/)[0])
+        let prix_prod
+        if(parent.find(".prix_prod").html()!="gratuit")
+        {
+            prix_prod=parseFloat(parent.find(".prix_prod").html().match(/(\d+)/)[0])
+        }else
+        {
+            prix_prod=0
+        }
+       
+        console.log(prix_tot)
+        console.log(prix_prod)
         if(qt==1)
         {
             parent.remove()
@@ -173,9 +185,15 @@ const delete_item_from_cart=function(nb_elem)
         }
        
         $.post("/menu/delete_from_cart",{nom_produit:product_name,taille:tl});
+        if(prix_prod!=undefined)
+        {
+            prix_tot-=prix_prod
+            $("#cart-form #prix_tot").html("Prix Total "+prix_tot+"$")
+        }
+       
         nb_elem--
         $("#cart p").html(nb_elem)
-
+        
     })   
 }
 
@@ -300,40 +318,48 @@ const open_cart=function()
     $('#cart').click((e)=>{
         $.get("/menu/get-cart","json").done(function(data){
             let nb_elem_cart=parseInt($("#cart p").html())
-
-            let layout=""
+            
+            let layout="<h2 id=\"prix_tot\">Prix Total "+data.totalPrice+"$</h2>"
             data.products.forEach(element => {
                 if(element.type=='pizza'||element.type=='pizza perso')
                 {
-                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem p\"> <h3><span>"+element.nom+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><h4 class=\"tl\"> taille: "+element.taille+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem p\"> <h3 class=\"d-flex flex-row flex-wrap justify-content-between\"><span>"+element.nom+"</span><span class=\"prix_prod\">"+element.prix+"$"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><h4 class=\"tl\"> taille: "+element.taille+"</h4><div class=\"del_space\"><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div></div>"
                 }
                 if(element.type=='boisson')
                 {
-                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem b\"> <h3><span>"+element.nom+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><h4 class=\"tl\"> taille: "+element.taille+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem b\"> <h3 class=\"d-flex flex-row flex-wrap justify-content-between\"><span>"+element.nom+"</span><span class=\"prix_prod\">"+element.prix+"$"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><h4 class=\"tl\"> taille: "+element.taille+"</h4><div class=\"del_space\"><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div></div>"
                 }
                 if(element.type=='entree')
                 {
-                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem e\"> <h3><span>"+element.nom+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem e\"> <h3 class=\"d-flex flex-row flex-wrap justify-content-between\"><span>"+element.nom+"</span><span class=\"prix_prod\">"+element.prix+"$"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><div class=\"del_space\"><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div></div>"
                 }
                 if(element.type=="sauce gratuit")
                 {
-                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem\"> <h3><span>"+element.nom+"</span><span>"+"gratuit"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                    layout=layout+"<div id=\""+element.nom+"\" class=\"cart-elem\"> <h3 class=\"d-flex flex-row flex-wrap justify-content-between\"><span>"+element.nom+"</span><span class=\"prix_prod\">"+"gratuit"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><div class=\"del_space\"><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div></div>"
                 }
-                if(element.type="menu")
+                if(element.type=="menu")
                 {
-                    layout=layout+"<div class=\"cart-elem\"> <h3><span>"+element.type+" "+element.subType+"</span><span>"+element.prix+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div>"
+                    layout=layout+"<div class=\"cart-elem\"> <h3 class=\"d-flex flex-row flex-wrap justify-content-between\"><span>"+element.type+" "+element.subType+"</span><span class=\"prix_prod\">"+element.prix+"$"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4>"
+                    let contenu=[...element.entree,...element.sauce,...element.pizza,...element.boisson]
+                    layout=layout+"<div class=\"d-flex flex-wrap flex-row justify-content-around menu_content\">"
+                    contenu.map(x=>{
+                        layout=layout+"<p>"+x+"</p>"
+                    })
+                    
+                    layout=layout+"</div>"
+                    layout=layout+"<div class=\"del_space\"><a class=\"delete-from-cart\"><img src=\"/assets/recycle-bin.png\"></a></div></div>"
 
                 }
                
                 
             });
-            layout=layout+"<button type=\"submit\">commander</button><a id=\"close-cart\"><img src=\"/assets/icons8-close-64.png\" ></a>"
             layout=layout+"<label for=\"nom\">Nom:</label>"
-            layout=layout+"<input type=\"text\" id=\"nom-client\" name=\"nom\" required>"
+            layout=layout+"<input type=\"text\" id=\"nom-client\" name=\"nom\" placeholder=\"Enter your lastname\" required>"
             layout=layout+"<label for=\"prenom\">Prenom:</label>"
-            layout=layout+"<input type=\"text\" id=\"prenom-client\" name=\"prenom\" required>"
-            layout=layout+"<div id=\"pac-container\"><input id=\"pac-input\" type=\"text\" placeholder=\"Enter a location\" ></div>"
-            layout=layout+"<div id=\"infowindow-content\"><span id=\"place-name\" class=\"title\"></span><br /><span id=\"place-address\"></span></div>"
+            layout=layout+"<input type=\"text\" id=\"prenom-client\" name=\"prenom\" placeholder=\"enter your firstname\" required>"
+            layout=layout+"<label for=\"location\">Adresse:</label>"
+            layout=layout+"<input id=\"location\" type=\"text\" placeholder=\"Enter a location\" required >"
+            layout=layout+"<button class=\"add\" type=\"submit\">commander</button><a id=\"close-cart\"><img src=\"/assets/icons8-close-64.png\" ></a>"
             $("#cart-form").html(layout)
             $(".cart-sec").toggleClass("hidden")
 
