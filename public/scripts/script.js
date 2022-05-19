@@ -115,7 +115,7 @@ const select_limit=function()
                 limit(2,input,id)
             break;
             case 'giga_pizza':
-                limit(4,input,id)
+                limit(2,input,id)
             break;
             case 'giga_boisson':
                 limit(1,input,id)
@@ -127,7 +127,7 @@ const select_limit=function()
                 limit(4,input,id)
             break;
             case 'extra_pizza':
-                limit(4,input,id)
+                limit(2,input,id)
             break;
             case 'extra_boisson':
                 limit(1,input,id)
@@ -341,7 +341,7 @@ const open_cart=function()
                 {
                     layout=layout+"<div class=\"cart-elem\"> <h3 class=\"d-flex flex-row flex-wrap justify-content-between\"><span>"+element.type+" "+element.subType+"</span><span class=\"prix_prod\">"+element.prix+"$"+"</span></h3><h4 class=\"qty\"> quantité: "+element.qty+"</h4>"
                     let contenu=[...element.entree,...element.sauce,...element.pizza,...element.boisson]
-                    layout=layout+"<div class=\"d-flex flex-wrap flex-row justify-content-around menu_content\">"
+                    layout=layout+"<div class=\"d-flex flex-nowrap flex-row justify-content-around menu_content\">"
                     contenu.map(x=>{
                         layout=layout+"<p>"+x+"</p>"
                     })
@@ -358,7 +358,7 @@ const open_cart=function()
             layout=layout+"<label for=\"prenom\">Prenom:</label>"
             layout=layout+"<input type=\"text\" id=\"prenom-client\" name=\"prenom\" placeholder=\"enter your firstname\" required>"
             layout=layout+"<label for=\"location\">Adresse:</label>"
-            layout=layout+"<input id=\"location\" type=\"text\" placeholder=\"Enter a location\" required >"
+            layout=layout+"<input id=\"location\" name=\"location\" type=\"text\" placeholder=\"Enter a location\" required >"
             layout=layout+"<button class=\"add\" type=\"submit\">commander</button><a id=\"close-cart\"><img src=\"/assets/icons8-close-64.png\" ></a>"
             $("#cart-form").html(layout)
             $(".cart-sec").toggleClass("hidden")

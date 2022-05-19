@@ -370,6 +370,11 @@ select
     background-color: rgb(190, 190, 190);
 }
 
+.cart-elem div p 
+{
+    border: solid whitesmoke 0.5px;
+}
+
 .cart-elem .del_space
 {
     width: 100%;

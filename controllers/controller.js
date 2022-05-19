@@ -1,8 +1,7 @@
-const { v4: uuidv4 } = require('uuid');
 const pool=require('../db_pool/pool')
 const Cart=require('../models/cart')
 const pizza_perso=require('../models/pizza_perso')
-
+const fs = require('fs');
 
 const get_all_menu_items=async(req,res)=> //this will be in a middle ware that runs in the begening of each req
 {
@@ -32,7 +31,6 @@ const get_all_menu_items=async(req,res)=> //this will be in a middle ware that r
 const get_cart=(req,res)=>
 {
     cart=Cart.getCart()
-    //console.log(cart.products[0].ing)
     res.json(cart)
     res.end()
 
@@ -63,7 +61,6 @@ const add_pizza_to_cart=async(req,res,next)=>
         res.send("error data base ")
     }
     res.end()
-    //console.log(Cart.getCart())
 
 }
 
@@ -174,7 +171,6 @@ const add_menu_to_cart=async(req,res,next)=>
     menu.sauce=req.body.sauce
     menu.pizza=req.body.pizza
     menu.boisson=req.body.boisson
-    console.log(menu)
     Cart.save(menu)
     
 
@@ -208,11 +204,25 @@ const commander=(req,res,next)=>
 {
     const nom=req.body.nom
     const prenom=req.body.prenom
-    const adresse=req.body.adresse
-    const command_id =uuidv4()
+    const adresse=req.body.location
+    let commandes
     const cart=Cart.getCart()
-    console.log(cart)//insert to database after doing modifs
-    res.render('checked_out',{id:command_id,nom:nom,prenom:prenom})
+    fs.readFile('./public/data/command.json', (err, data) => {
+        if (err) console.log(err)
+        commandes= JSON.parse(data)
+        let command=cart
+        command.nom=nom
+        command.prenom=prenom
+        command.adresse=adresse
+        commandes.commands.push(command)
+    
+        fs.writeFile('./public/data/command.json',JSON.stringify(commandes),(err)=>{
+            if (err) console.log(err)
+        })
+    });
+    
+    
+    res.render('checked_out',{nom:nom,prenom:prenom,location:adresse})
 }
 module.exports={
     get_all_menu_items,

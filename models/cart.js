@@ -1,43 +1,3 @@
-const compare_ing=(prod1,prod2)=>
-{
-    let a=[prod1.sauce,...prod1.fromage,...prod1.viande,...prod1.legume]
-    let b=[prod2.sauce,...prod2.fromage,...prod2.viande,...prod2.legume]
-    console.log(a)
-    console.log(b)
-    if(a.length!=b.length)
-    {
-        return false
-    }
-    else
-    {
-        let v=true
-        a.map((x)=>
-        {
-            if (b.findIndex(y=> y.nom==x.nom)!=-1)
-            {
-                v=v&&true
-            }
-            else
-            {
-                v=v&&false
-            }
-        })
-        b.map((x)=>
-        {
-            if (a.findIndex(y=>y.nom==x.nom)!=-1)
-            {
-                v=v&&true
-            }
-            else
-            {
-                v=v&&false
-            }
-        })
-
-        return v
-    }
-}
-
 let cart = { products: [], totalPrice: 0 };
 
 module.exports=class Cart {
@@ -50,7 +10,6 @@ module.exports=class Cart {
 
         if (product.type=="pizza")
         {
-            console.log(product.ing)
             product.prix_base=product.prix
             const existingProductIndex = cart.products.findIndex(p => ((p.nom == product.nom) &&(p.taille==product.taille))); // to check product is existing in cart
             if (existingProductIndex >= 0) 
