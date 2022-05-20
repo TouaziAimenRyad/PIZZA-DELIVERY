@@ -224,7 +224,7 @@ const commander=(req,res,next)=>
             command.adresse=adresse
             command.valid=valid
             command.id=Date.now().toString()+"$"+nom
-            commandes.commands.push(command)
+            commandes.commandes.push(command)
     
             fs.writeFile('./public/data/command.json',JSON.stringify(commandes),(err)=>{
                 if (err) {console.log(err);res.send("data base error")}

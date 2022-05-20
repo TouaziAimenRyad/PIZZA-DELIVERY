@@ -10,6 +10,9 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const server=express()
 
+
+
+//menu section
 server.use(express.static('public'));
 server.use(express.urlencoded({ extended: true }));
 server.set('view engine','ejs')
@@ -23,6 +26,8 @@ server.get('/',(req,res)=>{
 
 //-----------------------------------------------------------------
 
+
+//livreur section
 let users=[]
 
 function checkAuthenticated(req, res, next) {
@@ -71,13 +76,51 @@ server.get('/livreur', checkAuthenticated, async(req, res) => {
       else
       {
         commandes= JSON.parse(data)
-        console.log(commandes)
         res.render('livreur', { name: req.user.nom,commandes:commandes.commandes })
       }
       
     })
     
 })
+
+server.post('/livreur/select_cmd',checkAuthenticated,(req,res)=>
+{
+  let commandes
+  let data =fs.readFileSync('./public/data/command.json')
+  
+  commandes= JSON.parse(data)
+  let index=commandes.commandes.findIndex((x=>x.id==req.body.id_cmd))
+  if (index<0)
+  {
+    console.log("not found")
+  }
+  else
+  {
+    commandes.commandes[index].valid=false//remove and put in another array
+  }
+  fs.writeFileSync('./public/data/command.json',JSON.stringify(commandes))
+  res.redirect('/livreur/cmd_detail/'+commandes.commandes[index].id)
+    
+})
+ 
+server.get('/livreur/cmd_detail/:id',checkAuthenticated,(req,res)=>
+{
+  let data =fs.readFileSync('./public/data/command.json') 
+  commandes= JSON.parse(data)
+  let index=commandes.commandes.findIndex((x=>x.id==req.params.id))
+  if (index<0)
+  {
+    console.log("not found")
+    res.end()
+  }
+  else
+  {
+    res.render('command_detail',{commande:commandes.commandes[index]})
+  }
+
+})
+
+
 
 
 
@@ -114,7 +157,7 @@ server.delete('/logout', (req, res) => {
     req.logOut()
     res.redirect('/login')
 })
-  
+
 
 server.use((req, res) => {
     res.status(404).send('404')

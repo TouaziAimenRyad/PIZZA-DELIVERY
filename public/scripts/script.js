@@ -163,8 +163,7 @@ const delete_item_from_cart=function(nb_elem)
             prix_prod=0
         }
        
-        console.log(prix_tot)
-        console.log(prix_prod)
+       
         if(qt==1)
         {
             parent.remove()
