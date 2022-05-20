@@ -1,5 +1,6 @@
 const express=require('express')
 const pool=require('./db_pool/pool')
+const fs=require('fs')
 const routes=require('./routes/routes')
 const Cart=require('./models/cart')
 const bcrypt = require('bcrypt')
@@ -60,9 +61,23 @@ server.use(passport.initialize())
 server.use(passport.session())
 server.use(methodOverride('_method'))
 
-server.get('/livreur', checkAuthenticated, (req, res) => {
-    res.render('livreur', { name: req.user.name })
-  })
+server.get('/livreur', checkAuthenticated, async(req, res) => {
+    let commandes
+    fs.readFile('./public/data/command.json', (err, data) => {
+      if (err) {
+        console.log(err)
+        res.send("data base error")
+      }
+      else
+      {
+        commandes= JSON.parse(data)
+        console.log(commandes)
+        res.render('livreur', { name: req.user.nom,commandes:commandes.commandes })
+      }
+      
+    })
+    
+})
 
 
 
@@ -98,7 +113,7 @@ server.post('/register', checkNotAuthenticated, async(req,res)=>{
 server.delete('/logout', (req, res) => {
     req.logOut()
     res.redirect('/login')
-  })
+})
   
 
 server.use((req, res) => {

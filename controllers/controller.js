@@ -1,6 +1,7 @@
 const pool=require('../db_pool/pool')
 const Cart=require('../models/cart')
 const pizza_perso=require('../models/pizza_perso')
+const uuid=require('uuid')
 const fs = require('fs');
 
 const get_all_menu_items=async(req,res)=> //this will be in a middle ware that runs in the begening of each req
@@ -205,20 +206,31 @@ const commander=(req,res,next)=>
     const nom=req.body.nom
     const prenom=req.body.prenom
     const adresse=req.body.location
+    const valid=true
     let commandes
     const cart=Cart.getCart()
     fs.readFile('./public/data/command.json', (err, data) => {
-        if (err) console.log(err)
-        commandes= JSON.parse(data)
-        let command=cart
-        command.nom=nom
-        command.prenom=prenom
-        command.adresse=adresse
-        commandes.commands.push(command)
+        if (err)
+        {
+            console.log(err)
+            res.send("data base error")
+        } 
+        else
+        {
+            commandes= JSON.parse(data)
+            let command=cart
+            command.nom=nom
+            command.prenom=prenom
+            command.adresse=adresse
+            command.valid=valid
+            command.id=Date.now().toString()+"$"+nom
+            commandes.commands.push(command)
     
-        fs.writeFile('./public/data/command.json',JSON.stringify(commandes),(err)=>{
-            if (err) console.log(err)
-        })
+            fs.writeFile('./public/data/command.json',JSON.stringify(commandes),(err)=>{
+                if (err) {console.log(err);res.send("data base error")}
+            })
+        }
+        
     });
     
     

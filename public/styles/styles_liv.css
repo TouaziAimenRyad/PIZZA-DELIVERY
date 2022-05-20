@@ -1,0 +1,98 @@
+header
+{
+    width: 100%;
+    height: fit-content;
+    padding:1% 2%;
+    justify-content: center;
+    background-color: #f86600;
+}
+header h1 
+{
+    width: fit-content;
+    margin: auto;
+
+}
+header div
+{
+    clear: right;
+}
+
+.logout
+{
+    width: 100%;
+    height: fit-content;
+    
+ 
+}
+
+.logout button
+{
+    width: fit-content;
+    float: right;
+    margin: 0  ;
+    justify-self: center;
+	background-color:#ff0000;
+	border-radius:28px;
+	border:1px solid #f80000;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:22px;
+    padding:0 2%;    
+    transition: all 0.3s ease-out;
+}
+
+.logout button:hover
+{
+    background-color:#ec0000;
+}
+
+.cmds
+{
+    width: 50%;
+    display: inline-block;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 0;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+    background-color: #949494;
+}
+.cmds ul
+{
+    list-style: none;
+    padding: 0;
+
+}
+.cmd
+{
+    background-color: #cacaca;
+    border: 0.5px white solid;
+    margin-bottom: 1%;
+    padding-left:1%;
+}
+
+.cmd *
+{
+    margin:5px 0;
+}
+.cmd button
+{
+    width: fit-content;
+    height: fit-content;
+    margin: 0  ;
+    display: block;
+	background-color:#f86600;
+	border-radius:28px;
+	border:1px solid rgb(248, 102, 0);
+	cursor:pointer;
+	color:#ffffff;
+	font-size:22px;
+    padding: 0.5% 3%;    
+    margin: auto;
+    transition: all 0.3s ease-out;
+}
+
+.cmd button:hover
+{
+    background-color:#f74008;
+}

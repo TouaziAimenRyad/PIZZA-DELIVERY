@@ -4,13 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="/jquery-3.6.0.js"></script>
+    <script src="/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap.min.css" />
+    <link href="/styles/styles_liv.css" rel="stylesheet" />
+    <title>Livreur</title>
 </head>
 <body>
+  <header>
     <h1>Hi <%= name %></h1>
-<form action="/logout?_method=DELETE" method="POST">
-  <button type="submit">Log Out</button>
-</form>
+       
+    <form class="logout" action="/logout?_method=DELETE" method="POST">
+      <button type="submit">Log Out</button>
+    </form>
+    <div></div>
+  </header>
+  
+  <aside class="cmds">
+    <% if(commandes.length>0){ %>
+      <ul>
+        <% commandes.forEach(x=>{ %>
+          <% if(x.valid==true){ %>
+            <li class="cmd"> 
+              <form action="/livreur/select_cmd" class="select_cmd" method="post">
+                <h3>Adresse : <%= x.adresse %></h3>
+                <h4>Nom : <%= x.nom %></h4>
+                <h4>Prenom : <%= x.prenom %></h4>
+                <h5>Prix Total : <%= x.totalPrice %>$</h5>
+                <input type="hidden" name="id_cmd" value="<%= x.id %>"> 
+                <button type="submit">SELECT</button>
+              </form>
+            </li>
+          <% } %>
+          <% }) %>
+      </ul>
+    <% } %>
+  </aside>
 
 </body>
 </html>
