@@ -12,6 +12,6 @@ router.post('/add_pizza_perso',controller.add_perso_pizza_to_cart)
 router.post('/add_pre_menu',controller.add_menu_to_cart)
 router.post('/delete_from_cart',controller.delete_from_cart) //delete request is not safe 
 router.post('/commander',controller.commander)
-router.get('/menu_item/:nom',controller.item_detaill)
+router.get('/checkout',controller.checked_out)
 
 module.exports=router

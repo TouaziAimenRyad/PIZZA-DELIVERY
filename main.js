@@ -1,6 +1,7 @@
 const express=require('express')
 const pool=require('./db_pool/pool')
 const fs=require('fs')
+const path=require('path')
 const routes=require('./routes/routes')
 const Cart=require('./models/cart')
 const bcrypt = require('bcrypt')
@@ -13,7 +14,7 @@ const server=express()
 
 
 //menu section
-server.use(express.static('public'));
+server.use(express.static(path.join(__dirname, 'public')));
 server.use(express.urlencoded({ extended: true }));
 server.set('view engine','ejs')
 
@@ -40,7 +41,7 @@ function checkAuthenticated(req, res, next) {
   
   function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return res.redirect('/')
+      return res.redirect('/livreur')
     }
     next()
   }
@@ -145,7 +146,8 @@ server.post('/register', checkNotAuthenticated, async(req,res)=>{
 
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        await pool.query("INSERT INTO users(nom,prenom,email,password) VALUES('"+req.body.name+"','"+req.body.name+"','"+req.body.email+"','"+hashedPassword+"') ")
+        
+        await pool.query("INSERT INTO users(nom,prenom,email,password) VALUES('"+req.body.name+"','"+req.body.firstName+"','"+req.body.email+"','"+hashedPassword+"') ")
         res.redirect('/login')
       } catch {
         res.redirect('/register')
@@ -160,7 +162,7 @@ server.delete('/logout', (req, res) => {
 
 
 server.use((req, res) => {
-    res.status(404).send('404')
+    res.status(404).render('404')
 })
 
 server.listen(8000)

@@ -209,32 +209,28 @@ const commander=(req,res,next)=>
     const valid=true
     let commandes
     const cart=Cart.getCart()
-    fs.readFile('./public/data/command.json', (err, data) => {
-        if (err)
-        {
-            console.log(err)
-            res.send("data base error")
-        } 
-        else
-        {
-            commandes= JSON.parse(data)
-            let command=cart
-            command.nom=nom
-            command.prenom=prenom
-            command.adresse=adresse
-            command.valid=valid
-            command.id=Date.now().toString()+"$"+nom
-            commandes.commandes.push(command)
+    let data=fs.readFileSync('./public/data/command.json')
+   
+    commandes= JSON.parse(data)
+    let command=cart
+    command.nom=nom
+    command.prenom=prenom
+    command.adresse=adresse
+    command.valid=valid
+    command.id=Date.now().toString()+"$"+nom
+    commandes.commandes.push(command)
     
-            fs.writeFile('./public/data/command.json',JSON.stringify(commandes),(err)=>{
-                if (err) {console.log(err);res.send("data base error")}
-            })
-        }
-        
-    });
+    fs.writeFileSync('./public/data/command.json',JSON.stringify(commandes))
+    res.redirect('/menu/checkout')
     
     
-    res.render('checked_out',{nom:nom,prenom:prenom,location:adresse})
+
+}
+
+const checked_out=(req,res)=>
+{
+    res.render("checked_out")
+    
 }
 module.exports={
     get_all_menu_items,
@@ -246,5 +242,6 @@ module.exports={
     add_perso_pizza_to_cart,
     delete_from_cart,
     item_detaill,
-    commander
+    commander,
+    checked_out
 }
