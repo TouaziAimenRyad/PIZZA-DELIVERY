@@ -1,6 +1,7 @@
 body, html {
     height: 100%;
     overflow: auto;
+    background-color: rgb(236, 236, 236);
 }
 
 
@@ -87,7 +88,10 @@ select
     
 }
 
-  
+.navMenu{
+    border-color: #b9b9b9;
+}
+
 .navMenu a 
 {
     color: #202020;
@@ -468,7 +472,7 @@ select
     margin: 20px auto;
     /*max-width:350px ;*/
     min-width: 300px;
-    border: solid #555454 1px;
+    border: solid rgb(201, 201, 201) 1px;
     border-radius: 10px;
 }
 
@@ -486,11 +490,11 @@ select
 {
     width: 90%;
     height: fit-content;
-    border: solid 1px rgb(0, 0, 0); 
+    border: solid 1px rgb(170, 170, 170); 
     border-radius: 15px;
     margin:2% auto ;
     padding: 1%;
-    background-color: #cccccc;
+    background-color: rgb(215, 215, 215);
 }
 
 .add_menu_form .menu_selection h3 ,#add_pizza_perso_form .pizza_ing h3

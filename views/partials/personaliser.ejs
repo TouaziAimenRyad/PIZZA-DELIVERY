@@ -3,7 +3,7 @@
                 <h3>Sauces</h3> 
                 <div class=" d-flex flex-wrap">
                     <% ingrediant.sauce.forEach(x=>{ %>
-                        <input type="radio" id="choose_<%= x.nom %>" name="sauce" value="<%= x.nom %>" required ><label for="choose_<%= x.nom %>"><img src="assets/ingrediant/<%= x.nom %>" alt="<%= x.nom %> "><p><%= x.nom %></p></label>  
+                        <input type="radio" id="choose_<%= x.nom %>" name="sauce" value="<%= x.nom %>" required ><label for="choose_<%= x.nom %>"><img src="/assets/ingrediant/<%= x.nom %>.jpg" alt="<%= x.nom %> "><p><%= x.nom %></p></label>  
                     <% }) %>
                 </div>
                
@@ -14,7 +14,7 @@
                 <h3>Viandes</h3> 
                 <div class=" d-flex flex-wrap">
                     <% ingrediant.viande.forEach(x=>{ %> 
-                        <input type="checkbox" id="choose_<%= x.nom %>"  name="viande" value="<%= x.nom %>" ><label for="choose_<%= x.nom %>"><img src="assets/ingrediant/<%= x.nom %>" alt="<%= x.nom %> "><p><%= x.nom %></p></label> 
+                        <input type="checkbox" id="choose_<%= x.nom %>"  name="viande" value="<%= x.nom %>" ><label for="choose_<%= x.nom %>"><img src="/assets/ingrediant/<%= x.nom %>.jpg" alt="<%= x.nom %> "><p><%= x.nom %></p></label> 
                     <% }) %>
                 </div>
                 
@@ -25,7 +25,7 @@
                 <h3>Fromages</h3>
                 <div class=" d-flex flex-wrap">
                     <% ingrediant.fromage.forEach(x=>{ %> 
-                        <input type="checkbox" id="choose_<%= x.nom %>"  name="fromage" value="<%= x.nom %>" ><label for="choose_<%= x.nom %>"><img src="assets/ingrediant/<%= x.nom %>" alt="<%= x.nom %> "><p><%= x.nom %></p></label> 
+                        <input type="checkbox" id="choose_<%= x.nom %>"  name="fromage" value="<%= x.nom %>" ><label for="choose_<%= x.nom %>"><img src="/assets/ingrediant/<%= x.nom %>.jpg" alt="<%= x.nom %> "><p><%= x.nom %></p></label> 
                     <% }) %>
                 </div>
                 
@@ -36,7 +36,7 @@
                 <h3>Legumes</h3> 
                 <div class=" d-flex flex-wrap">
                     <% ingrediant.legume.forEach(x=>{ %>  
-                        <input type="checkbox" id="choose_<%= x.nom %>" name="legume" value="<%= x.nom %>" ><label for="choose_<%= x.nom %>"><img src="assets/ingrediant/<%= x.nom %>" alt="<%= x.nom %> "><p><%= x.nom %></p></label>
+                        <input type="checkbox" id="choose_<%= x.nom %>" name="legume" value="<%= x.nom %>" ><label for="choose_<%= x.nom %>"><img src="/assets/ingrediant/<%= x.nom %>.jpg" alt="<%= x.nom %> "><p><%= x.nom %></p></label>
                     <% }) %>
                 </div>
                 
