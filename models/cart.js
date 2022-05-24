@@ -33,6 +33,7 @@ module.exports=class Cart {
             {   
                 product.prix +=4;
             }
+            
             cart.totalPrice += product.prix;
         }
 

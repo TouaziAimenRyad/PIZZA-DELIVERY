@@ -2,9 +2,19 @@ body, html {
     height: 100%;
     overflow: auto;
     background-color: rgb(236, 236, 236);
+
+    font-family: "Roboto", sans-serif;
 }
-
-
+h2,h3
+{
+    text-transform:uppercase ;
+    font-weight: 400;
+}
+label
+{
+    font-weight: bolder;
+    text-transform:uppercase ;
+}
 select
 {
     margin: 2% 0;
@@ -92,6 +102,27 @@ select
     border-color: #b9b9b9;
 }
 
+@media screen and (max-width: 550px) {
+    .navMenu li a{
+        padding: 0;
+        width: fit-content;
+    }
+    .navMenu
+    {
+        
+        width: fit-content;
+    }
+    .navMenu li
+    {
+        width: fit-content;
+        padding: 5px;
+    }
+    #menu
+    {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
 .navMenu a 
 {
     color: #202020;
@@ -141,7 +172,7 @@ select
     background-color: rgb(245, 245, 245);
     width:100%;
     /*max-width:350px ;*/
-    min-width: 300px;
+    min-width: 200px;
     margin: 0 auto;
     border: solid #555454 1px;
     border-radius: 10px;
@@ -165,11 +196,6 @@ select
     display: flex;
     justify-content: space-between;
     margin: 0;
-}
-
-.menu-item-name
-{
-    margin-right: 1.5em;
 }
 
 .item-body
@@ -465,7 +491,7 @@ select
 /*check box styles for add menu */
 .add_menu_form,#add_pizza_perso_form
 {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(240, 240, 240);
     width:60%;
     padding: 2%;
     padding-bottom: 1%;

@@ -33,6 +33,7 @@ const get_cart=(req,res)=>
 {
     cart=Cart.getCart()
     res.json(cart)
+    console.log(cart)
     res.end()
 
 }
@@ -159,6 +160,7 @@ const add_perso_pizza_to_cart=async(req,res,next)=>
     }
     let new_pizza=await pizza_perso.create_pizza(sauce,viande,fromage,legume,req.body.taille)
     Cart.save(new_pizza)
+    console.log(new_pizza)
     res.end()
 }
 
